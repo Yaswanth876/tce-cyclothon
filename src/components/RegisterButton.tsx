@@ -1,0 +1,47 @@
+"use client";
+
+import { cn } from "@/lib/cn";
+import { eventConfig } from "@/data/eventConfig";
+
+interface RegisterButtonProps {
+  className?: string;
+  size?: "sm" | "md" | "lg";
+  variant?: "solid" | "outline";
+  label?: string;
+}
+
+export function RegisterButton({
+  className,
+  size = "md",
+  variant = "solid",
+  label = "Register Now",
+}: RegisterButtonProps) {
+  const sizeClasses = {
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-2.5 text-sm",
+    lg: "px-8 py-4 text-base",
+  };
+
+  const variantClasses = {
+    solid:
+      "bg-primary text-white hover:bg-primary-hover active:scale-[0.98] shadow-sm",
+    outline:
+      "border-2 border-primary text-primary hover:bg-primary hover:text-white",
+  };
+
+  return (
+    <a
+      href={eventConfig.event.registrationUrl}
+      className={cn(
+        "inline-flex items-center justify-center gap-2 rounded-full font-semibold",
+        "motion-safe:transition-all motion-safe:duration-200",
+        "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+        sizeClasses[size],
+        variantClasses[variant],
+        className
+      )}
+    >
+      {label}
+    </a>
+  );
+}

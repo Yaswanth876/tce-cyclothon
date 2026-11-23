@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* ── Primitive Palette ── */
+  --color-obsidian:         #0A0A0A;
+  --color-charcoal:         #1C1C1E;
+  --color-carbon:           #111111;
+  --color-midnight:         #102540;
+
+  /* ── SDG 3.5 Kelly Green (primary accent — replaces Cyclooner neon lime) ── */
+  --color-sdg-green:        #4C9F38;
+  --color-sdg-green-hover:  #3B7E2B;
+  --color-sdg-green-tint:   #EBF6E8;
+
+  /* ── TCE Maroon (institutional host) ── */
+  --color-tce-maroon:       #6E1A27;
+  --color-tce-maroon-tint:  #F5E8EB;
+
+  /* ── Semantic Aliases ── */
+  --color-background:       #FFFFFF;
+  --color-foreground:       #111111;
+  --color-primary:          #4C9F38;
+  --color-primary-hover:    #3B7E2B;
+  --color-primary-tint:     #EBF6E8;
+  --color-accent:           #6E1A27;
+  --color-accent-tint:      #F5E8EB;
+  --color-surface-dark:     #0A0A0A;
+  --color-surface-card:     #1C1C1E;
+  --color-surface-pledge:   #102540;
+  --color-muted:            #71717A;
+  --color-border:           #E4E4E7;
+
+  /* ── Typography ── */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base layer ── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar hide utility ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Focus ring ── */
+*:focus-visible {
+  outline: 2px solid #4C9F38;
+  outline-offset: 2px;
+}
+
+/* ── Reduced motion safety ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
