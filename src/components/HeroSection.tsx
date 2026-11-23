@@ -9,7 +9,7 @@ export function HeroSection() {
     <section
       id="hero"
       aria-labelledby="hero-heading"
-      className="relative mx-3 md:mx-4 mt-20 md:mt-24 rounded-3xl overflow-hidden min-h-[80vh] md:min-h-[88vh] flex flex-col justify-end"
+      className="relative mx-3 md:mx-4 mt-0 rounded-3xl overflow-hidden min-h-[80vh] md:min-h-[88vh] flex flex-col justify-end"
     >
       {/* Background — dark placeholder gradient (swap for real photo via next/image) */}
       <div
