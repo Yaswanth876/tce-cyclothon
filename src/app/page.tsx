@@ -8,10 +8,12 @@ import { VoicesSection } from "@/components/VoicesSection";
 import { SponsorsSection } from "@/components/SponsorsSection";
 import { FaqSection } from "@/components/FaqSection";
 import { FooterSection } from "@/components/FooterSection";
+import { PreloaderManager } from "@/components/preloader/PreloaderManager";
 
 export default function Home() {
   return (
     <>
+      <PreloaderManager />
       <Navbar />
       <main>
         <HeroSection />
