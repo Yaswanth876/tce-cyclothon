@@ -31,10 +31,10 @@ async function run() {
   await page.screenshot({ path: path.join(OUTPUT_DIR, 'stage1-helmet.png') });
   console.log('Captured stage1-helmet.png at 1400ms');
 
-  // Stage 2 at 3200ms (rider pedaling across text, wiping letters)
-  await new Promise(r => setTimeout(r, 1800));
+  // Stage 2 at 3900ms (rider pedaling across text, wiping letters)
+  await new Promise(r => setTimeout(r, 2500));
   await page.screenshot({ path: path.join(OUTPUT_DIR, 'stage2-wipe.png') });
-  console.log('Captured stage2-wipe.png at 3200ms');
+  console.log('Captured stage2-wipe.png at 3900ms');
 
   const wipeInfo = await page.evaluate(() => {
     const spans = Array.from(document.querySelectorAll('h1 span'));
@@ -46,12 +46,32 @@ async function run() {
       }))
     };
   });
-  console.log('Wipe info at 3200ms:', JSON.stringify(wipeInfo, null, 2));
+  console.log('Wipe info at 3900ms:', JSON.stringify(wipeInfo, null, 2));
 
-  // Stage 4 at 5200ms (wheelie re-entry)
-  await new Promise(r => setTimeout(r, 2000));
+  // Check position at ~4.7s
+  await page.evaluate(() => window.__startTime = performance.now());
+  const check = await page.evaluate(async () => {
+    return new Promise(resolve => {
+      const checkInterval = setInterval(() => {
+        const elapsed = performance.now() - window.__startTime;
+        const el = document.querySelector('svg[aria-label="Realistic cyclist silhouette"]')?.parentElement?.parentElement;
+        if (el && elapsed > 4500 && elapsed < 6000) {
+          const rect = el.getBoundingClientRect();
+          if (rect.left > 100 && rect.left < 800) {
+            clearInterval(checkInterval);
+            resolve({ elapsed, rect: { left: rect.left, top: rect.top, width: rect.width } });
+          }
+        }
+        if (elapsed >= 6500) {
+          clearInterval(checkInterval);
+          resolve({ elapsed, rect: null });
+        }
+      }, 50);
+    });
+  });
+  console.log('Bike in wheelie at:', check);
   await page.screenshot({ path: path.join(OUTPUT_DIR, 'stage4-wheelie.png') });
-  console.log('Captured stage4-wheelie.png at 5200ms');
+  console.log('Captured stage4-wheelie.png');
 
   // Stage 5 at 7000ms (finished)
   await new Promise(r => setTimeout(r, 1800));

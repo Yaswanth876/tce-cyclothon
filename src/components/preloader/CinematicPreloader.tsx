@@ -142,7 +142,7 @@ export function CinematicPreloader({
 
       // Responsive start position on center-left
       const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
-      const startX = isMobile ? "-10vw" : "4vw";
+      const startX = isMobile ? "-4vw" : "4vw";
 
       gsap.set(cyclistEl, {
         x: startX,
@@ -441,7 +441,7 @@ export function CinematicPreloader({
       {/* ============================================================== */}
       <div
         ref={cyclistWrapperRef}
-        className="absolute z-20 pointer-events-none w-[220px] sm:w-[280px] md:w-[350px] lg:w-[400px]"
+        className="absolute z-20 pointer-events-none w-[110px] sm:w-[140px] md:w-[175px] lg:w-[200px]"
         style={{
           left: 0,
           bottom: 0,
