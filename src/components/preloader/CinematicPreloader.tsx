@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import gsap from "gsap";
-import { CyclistSilhouette } from "./CyclistSilhouette";
+import { CyclistSilhouette, THETA0 } from "./CyclistSilhouette";
 import { FastForward } from "lucide-react";
 
 interface CinematicPreloaderProps {
@@ -10,6 +10,14 @@ interface CinematicPreloaderProps {
   onComplete?: () => void;
   /** Force disable preloader */
   disabled?: boolean;
+  /**
+   * Cyclist vertical positioning mode:
+   * - "overlap": Cyclist physically passes in front of the loading text, directly overlapping the letters (as specified in Master Spec).
+   * - "bottom": Cyclist rides along the bottom edge of the screen.
+   */
+  position?: "overlap" | "bottom";
+  /** Whether to show the numerical loading percentage beneath the text */
+  showProgress?: boolean;
 }
 
 interface CharInfo {
@@ -21,16 +29,20 @@ interface CharInfo {
 export function CinematicPreloader({
   onComplete,
   disabled = false,
+  position = "overlap",
+  showProgress = true,
 }: CinematicPreloaderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const cyclistWrapperRef = useRef<HTMLDivElement>(null);
   const textContainerRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   // Cyclist kinematics state (driven by GSAP)
   const [animTime, setAnimTime] = useState(0);
   const [crankAngle, setCrankAngle] = useState(0);
   const [wheelAngle, setWheelAngle] = useState(0);
   const [wheelieAngle, setWheelieAngle] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
 
   // Character element refs and measured coordinates
@@ -128,9 +140,10 @@ export function CinematicPreloader({
 
       const riderState = {
         t: 0,
-        crank: 0,
+        crank: THETA0,
         wheel: 0,
         wheelie: 0,
+        pct: 0,
       };
 
       const updateKinematics = () => {
@@ -138,15 +151,18 @@ export function CinematicPreloader({
         setCrankAngle(riderState.crank);
         setWheelAngle(riderState.wheel);
         setWheelieAngle(riderState.wheelie);
+        setProgress(Math.round(riderState.pct));
       };
 
       // Responsive start position on center-left
       const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
       const startX = isMobile ? "-4vw" : "4vw";
+      const isOverlap = position === "overlap";
+      const startY = isOverlap ? "-50%" : "0%";
 
       gsap.set(cyclistEl, {
         x: startX,
-        y: "0%",
+        y: startY,
         opacity: 0,
         scale: 0.98,
       });
@@ -190,11 +206,12 @@ export function CinematicPreloader({
         0.15
       );
 
-      // Interpolate silhouette time t: 0 -> 5.3 (putting on helmet, chin strap, drops into drops)
+      // Interpolate silhouette time t: 0 -> 4.8 (putting on helmet, chin strap, hands to hoods)
       masterTL.to(
         riderState,
         {
-          t: 5.3,
+          t: 4.8,
+          pct: 35,
           duration: 2.3,
           ease: "none",
           onUpdate: updateKinematics,
@@ -266,12 +283,14 @@ export function CinematicPreloader({
       );
 
       // Pedaling cadence (slowed to a realistic, powerful ~80-85 RPM athletic cadence)
+      // Progress ramps to 90% as cyclist crosses the screen
       masterTL.to(
         riderState,
         {
           t: 8.0,
-          crank: Math.PI * 5,
+          crank: THETA0 + Math.PI * 5,
           wheel: Math.PI * 24,
+          pct: 90,
           duration: 2.0,
           ease: "power2.in",
           onUpdate: updateKinematics,
@@ -279,17 +298,42 @@ export function CinematicPreloader({
         2.4
       );
 
+      // Smoothly fade progress indicator as cyclist finishes letter wipe
+      if (progressRef.current) {
+        masterTL.to(
+          progressRef.current,
+          {
+            opacity: 0,
+            duration: 0.25,
+            ease: "power2.out",
+          },
+          4.1
+        );
+      }
+
       // -------------------------------------------------------------
       // STAGE 4: Re-entry & Convincing Bicycle Wheelie (4.4s - 6.4s)
       // -------------------------------------------------------------
       masterTL.addLabel("stage4", 4.4);
+
+      // Progress reaches 100% on wheelie re-entry
+      masterTL.to(
+        riderState,
+        {
+          pct: 100,
+          duration: 0.1,
+          ease: "none",
+          onUpdate: updateKinematics,
+        },
+        4.4
+      );
 
       // Re-position cyclist offscreen to the left for Stage 4 wheelie re-entry
       masterTL.set(
         cyclistEl,
         {
           x: "-32vw",
-          y: "0%",
+          y: startY,
         },
         4.4
       );
@@ -310,7 +354,7 @@ export function CinematicPreloader({
         riderState,
         {
           wheelie: 26,
-          crank: Math.PI * 7.5,
+          crank: THETA0 + Math.PI * 7.5,
           wheel: Math.PI * 44,
           duration: 0.45,
           ease: "back.out(1.5)",
@@ -324,7 +368,7 @@ export function CinematicPreloader({
         riderState,
         {
           wheelie: 25,
-          crank: Math.PI * 10,
+          crank: THETA0 + Math.PI * 10,
           wheel: Math.PI * 58,
           duration: 0.9,
           ease: "sine.inOut",
@@ -338,7 +382,7 @@ export function CinematicPreloader({
         riderState,
         {
           wheelie: 0,
-          crank: Math.PI * 12,
+          crank: THETA0 + Math.PI * 12,
           wheel: Math.PI * 68,
           duration: 0.45,
           ease: "power2.in",
@@ -410,13 +454,13 @@ export function CinematicPreloader({
       </header>
 
       {/* ============================================================== */}
-      {/* 2. CENTER OF SCREEN: LOADING TEXT ALONE (half size)            */}
+      {/* 2. CENTER OF SCREEN: LOADING TEXT & PROGRESS                   */}
       {/* ============================================================== */}
       <div
         ref={textContainerRef}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-center max-w-4xl px-4 pointer-events-none select-none"
       >
-        <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-widest uppercase leading-none text-black whitespace-nowrap">
+        <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-widest uppercase leading-none text-black whitespace-nowrap">
           {allCharacters.map((c) => (
             <span
               key={`char-${c.index}`}
@@ -424,7 +468,7 @@ export function CinematicPreloader({
                 charElementsRef.current[c.index] = el;
               }}
               className={`inline-block transition-transform duration-75 text-black ${
-                c.isSpace ? "w-1.5 sm:w-2.5 md:w-3.5" : ""
+                c.isSpace ? "w-2 sm:w-3 md:w-4" : ""
               }`}
               style={{
                 willChange: "clip-path, opacity, transform",
@@ -434,17 +478,31 @@ export function CinematicPreloader({
             </span>
           ))}
         </h1>
+
+        {showProgress && (
+          <div
+            ref={progressRef}
+            className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-black/45 mt-4 tabular-nums"
+          >
+            {progress}%
+          </div>
+        )}
       </div>
 
       {/* ============================================================== */}
-      {/* 3. BOTTOM OF SCREEN: BLACK CYCLIST SILHOUETTE (wheels at bottom) */}
+      {/* 3. CYCLIST SILHOUETTE (OVERLAPPING TEXT OR BOTTOM ANCHORED)     */}
       {/* ============================================================== */}
       <div
         ref={cyclistWrapperRef}
-        className="absolute z-20 pointer-events-none w-[110px] sm:w-[140px] md:w-[175px] lg:w-[200px]"
+        className={`absolute z-20 pointer-events-none ${
+          position === "overlap"
+            ? "w-[160px] sm:w-[200px] md:w-[240px] lg:w-[270px]"
+            : "w-[110px] sm:w-[140px] md:w-[175px] lg:w-[200px]"
+        }`}
         style={{
           left: 0,
-          bottom: 0,
+          top: position === "overlap" ? "50%" : "auto",
+          bottom: position === "overlap" ? "auto" : 0,
           willChange: "transform",
         }}
       >

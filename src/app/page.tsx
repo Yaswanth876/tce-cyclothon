@@ -9,11 +9,13 @@ import { SponsorsSection } from "@/components/SponsorsSection";
 import { FaqSection } from "@/components/FaqSection";
 import { FooterSection } from "@/components/FooterSection";
 import { PreloaderManager } from "@/components/preloader/PreloaderManager";
+import { ScrollCyclistProgress } from "@/components/ScrollCyclistProgress";
 
 export default function Home() {
   return (
     <>
       <PreloaderManager />
+      <ScrollCyclistProgress />
       <Navbar />
       <main>
         <HeroSection />

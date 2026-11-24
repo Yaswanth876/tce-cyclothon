@@ -35,7 +35,7 @@ export function PreloaderManager() {
       {hasCompletedOnce && !showPreloader && (
         <aside
           aria-label="Presentation controls"
-          className="fixed bottom-5 left-5 z-40 hidden sm:block animate-fade-in"
+          className="fixed bottom-9 left-5 z-40 hidden sm:block animate-fade-in"
         >
           <button
             type="button"
