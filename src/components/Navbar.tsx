@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { RegisterButton } from "./RegisterButton";
 
 const NAV_LINKS = [
   { href: "#mission", label: "Mission" },
+  { href: "/gallery", label: "Gallery" },
   { href: "#route", label: "Route" },
   { href: "#kit", label: "Rider Kit" },
   { href: "#sponsors", label: "Sponsors" },
@@ -14,9 +17,11 @@ const NAV_LINKS = [
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState(pathname === "/gallery" ? "gallery" : "");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -24,9 +29,16 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Intersection observer for active link highlighting
+  // Intersection observer for active link highlighting on homepage
   useEffect(() => {
-    const sectionIds = NAV_LINKS.map((l) => l.href.replace("#", ""));
+    if (!isHomePage) {
+      if (pathname === "/gallery") setActiveSection("gallery");
+      return;
+    }
+
+    const sectionIds = NAV_LINKS.filter((l) => l.href.startsWith("#")).map((l) =>
+      l.href.replace("#", "")
+    );
     const observers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id) => {
@@ -43,7 +55,13 @@ export function Navbar() {
     });
 
     return () => observers.forEach((o) => o.disconnect());
-  }, []);
+  }, [isHomePage, pathname]);
+
+  const resolveHref = (href: string) => {
+    if (href.startsWith("/")) return href;
+    if (isHomePage) return href;
+    return `/${href}`;
+  };
 
   return (
     <>
@@ -60,8 +78,8 @@ export function Navbar() {
       >
         <div className="flex items-center justify-between px-4 py-2.5 md:px-6">
           {/* Logo + SDG badge */}
-          <a
-            href="#"
+          <Link
+            href="/"
             className="flex items-center gap-2.5 shrink-0"
             aria-label="TCE Cyclothon home"
           >
@@ -76,26 +94,32 @@ export function Navbar() {
             <span className="hidden sm:inline-flex items-center rounded-full bg-primary-tint text-primary text-[10px] font-semibold px-2 py-0.5 border border-sdg-green/20 whitespace-nowrap">
               SDG 3 · Target 3.5
             </span>
-          </a>
+          </Link>
 
           {/* Desktop nav links */}
           <ul className="hidden md:flex items-center gap-1" role="list">
             {NAV_LINKS.map(({ href, label }) => {
               const id = href.replace("#", "");
+              const isCurrent =
+                href === "/gallery"
+                  ? pathname === "/gallery"
+                  : isHomePage && activeSection === id;
+              const targetUrl = resolveHref(href);
+
               return (
                 <li key={href}>
-                  <a
-                    href={href}
+                  <Link
+                    href={targetUrl}
                     className={cn(
                       "px-3.5 py-1.5 rounded-full text-sm font-medium",
                       "motion-safe:transition-colors motion-safe:duration-150",
-                      activeSection === id
+                      isCurrent
                         ? "bg-primary-tint text-primary"
                         : "text-foreground/70 hover:text-foreground hover:bg-zinc-100"
                     )}
                   >
                     {label}
-                  </a>
+                  </Link>
                 </li>
               );
             })}
@@ -131,13 +155,13 @@ export function Navbar() {
         <ul className="flex flex-col gap-1 mb-6" role="list">
           {NAV_LINKS.map(({ href, label }) => (
             <li key={href}>
-              <a
-                href={href}
+              <Link
+                href={resolveHref(href)}
                 className="block px-4 py-3 rounded-xl text-base font-medium text-foreground hover:bg-primary-tint hover:text-primary motion-safe:transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
                 {label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

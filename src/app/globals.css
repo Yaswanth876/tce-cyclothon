@@ -72,3 +72,62 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── Gallery Slot-In Placement Animation (Bidirectional Scroll) ── */
+.gallery-slot-wrapper {
+  /* Holds static column position and masonry gaps */
+  contain: layout;
+}
+
+.gallery-slot-card {
+  will-change: transform, opacity;
+  transform-origin: center center;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Scrolling DOWN: Picture rises from below into the gap */
+.gallery-slot-card.slot-entering-down {
+  animation: slotPlaceDown var(--slot-dur, 1.05s) cubic-bezier(0.16, 1, 0.3, 1) var(--slot-del, 0s) both;
+}
+
+@keyframes slotPlaceDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--slot-x, 0px), var(--slot-y, 180px), 0px) scale(var(--slot-scale, 1.12));
+  }
+  15% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px) scale(1);
+  }
+}
+
+/* Scrolling UP: Picture drops from above into the gap */
+.gallery-slot-card.slot-entering-up {
+  animation: slotPlaceUp var(--slot-dur, 1.05s) cubic-bezier(0.16, 1, 0.3, 1) var(--slot-del, 0s) both;
+}
+
+@keyframes slotPlaceUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--slot-x, 0px), var(--slot-y, -180px), 0px) scale(var(--slot-scale, 1.12));
+  }
+  15% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-slot-card.slot-entering-down,
+  .gallery-slot-card.slot-entering-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

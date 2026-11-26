@@ -178,6 +178,10 @@ export interface CyclistSilhouetteProps {
   crank?: number;
   wheel?: number;
   wheelieAngle?: number;
+  stoppieAngle?: number;
+  bikePitch?: number;
+  ink?: string;
+  glow?: boolean;
   className?: string;
 }
 
@@ -186,6 +190,10 @@ export function CyclistSilhouette({
   crank = THETA0,
   wheel = 0,
   wheelieAngle = 0,
+  stoppieAngle = 0,
+  bikePitch = 0,
+  ink = INK,
+  glow = false,
   className = "",
 }: CyclistSilhouetteProps) {
   const p = useMemo(() => pose(t, crank), [t, crank]);
