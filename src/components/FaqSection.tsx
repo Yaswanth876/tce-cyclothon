@@ -1,41 +1,52 @@
-import { eventConfig } from "@/data/eventConfig";
-import { FaqAccordion } from "./FaqAccordion";
-import { HelpCircle } from "lucide-react";
+import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { FaqExplorer } from "./FaqExplorer";
 
 export function FaqSection() {
-  const { faqs } = eventConfig;
-
   return (
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="py-20 md:py-28 px-4 md:px-6"
+      className="bg-background px-4 py-20 sm:px-8 md:py-28 lg:px-16"
     >
-      <div className="max-w-3xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-tint text-primary text-xs font-semibold px-3 py-1.5 mb-5 border border-primary/20">
-            <HelpCircle size={12} />
-            Got Questions?
-          </span>
+      <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.35fr)] lg:gap-16 xl:gap-24">
+        <div>
           <h2
             id="faq-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground leading-[1.1] tracking-tight mb-3"
+            className="text-4xl font-black leading-[1.02] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
           >
-            Frequently Asked{" "}
-            <span className="text-primary">Questions</span>
+            <span className="block">A little clarity.</span>
+            <span className="block text-muted">A lot less</span>
+            <span className="block text-muted">guesswork.</span>
           </h2>
-          <p className="text-muted text-base max-w-md mx-auto">
-            Everything you need to know before race day. Can&apos;t find your
-            answer?{" "}
-            <a href="mailto:cyclothon@tce.edu" className="text-primary hover:underline font-semibold">
-              Contact us
-            </a>
-            .
-          </p>
+
+          <a
+            href="mailto:cyclothon@tce.edu"
+            aria-label="Email the TCE Cyclothon team"
+            className="group mt-9 flex min-h-24 w-full max-w-sm items-center gap-4 rounded-3xl border border-accent/10 bg-accent-tint px-5 py-5 transition-[transform,background-color] duration-200 hover:bg-accent-tint motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 motion-reduce:transition-none"
+          >
+            <span
+              aria-hidden="true"
+              className="flex size-12 shrink-0 items-center justify-center rounded-full bg-background text-accent"
+            >
+              <MessageCircle size={22} />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-sm font-semibold text-foreground">
+                Still have a question?
+              </span>
+              <span className="mt-1 block text-sm text-muted">
+                Contact the organizers
+              </span>
+            </span>
+            <ArrowUpRight
+              size={18}
+              aria-hidden="true"
+              className="shrink-0 text-accent transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
+            />
+          </a>
         </div>
 
-        <FaqAccordion items={faqs} />
+        <FaqExplorer />
       </div>
     </section>
   );

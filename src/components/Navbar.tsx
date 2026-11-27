@@ -113,6 +113,34 @@ export function Navbar({
     onRegisterClick?.(event);
   };
 
+  const handleMobileLinkClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (!href.startsWith("#")) {
+      setMenuOpen(false);
+      return;
+    }
+
+    event.preventDefault();
+    setMenuOpen(false);
+    window.setTimeout(() => {
+      const target = document.getElementById(href.slice(1));
+      if (!target) return;
+
+      if (window.location.hash !== href) {
+        window.history.pushState(null, "", href);
+      }
+
+      target.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+        block: "start",
+      });
+    }, 0);
+  };
+
   const renderLinks = (mobile = false) =>
     navLinks.map(({ label, href }) => {
       const current = href.startsWith("#") && activeSection === href.slice(1);
@@ -120,7 +148,11 @@ export function Navbar({
         <li key={href}>
           <Link
             href={href}
-            onClick={mobile ? () => setMenuOpen(false) : undefined}
+            onClick={
+              mobile
+                ? (event) => handleMobileLinkClick(event, href)
+                : undefined
+            }
             aria-current={current ? "location" : undefined}
             className={cn(
               mobile

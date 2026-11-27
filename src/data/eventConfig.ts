@@ -47,11 +47,6 @@ export interface Sponsor {
   tier: "organizing" | "title" | "partner";
 }
 
-export interface FaqItem {
-  question: string;
-  answer: string;
-}
-
 export interface EventConfig {
   isOfficialDetailsConfirmed: boolean;
   event: {
@@ -80,7 +75,6 @@ export interface EventConfig {
     titleSponsors: Sponsor[];
     eventPartners: Sponsor[];
   };
-  faqs: FaqItem[];
   socialLinks: {
     instagram?: string;
     twitter?: string;
@@ -334,39 +328,6 @@ export const eventConfig: EventConfig = {
       { name: "Event Partner 4", logoUrl: "/images/sponsors/placeholder-partner-4.png", tier: "partner" },
     ],
   },
-
-  faqs: [
-    {
-      question: "Is wearing a helmet mandatory?",
-      answer:
-        "Yes, helmets are mandatory for all categories. Riders without helmets will not be allowed to start. If you don't own one, limited helmets will be available at the registration desk on a first-come, first-served basis.",
-    },
-    {
-      question: "Do I need to bring my own bicycle?",
-      answer:
-        "Yes, riders must bring their own bicycles. TCE is coordinating with local rental shops for limited rental options — details will be shared closer to the event date.",
-    },
-    {
-      question: "What is the age eligibility?",
-      answer:
-        "5 KM Fun Ride: 12+ years (under-16 requires parent consent). 15 KM Challenger: 15+ years. 25 KM Champion: 16+ years. Valid ID proof required at registration.",
-    },
-    {
-      question: "What time should I report on event day?",
-      answer:
-        "Gates open at 5:00 AM. Reporting time is 5:30 AM for bib collection and warm-up. Flag-off is scheduled for 6:00 AM. Late arrivals may not be accommodated.",
-    },
-    {
-      question: "Is medical support available on the route?",
-      answer:
-        "Yes, medical volunteers and first-aid stations will be positioned at every checkpoint. An ambulance will shadow the peloton. Emergency contact numbers will be printed on your bib.",
-    },
-    {
-      question: "Can I switch categories after registration?",
-      answer:
-        "Category changes are allowed up to 48 hours before the event, subject to availability. Contact the organizing committee via the event website.",
-    },
-  ],
 
   socialLinks: {
     instagram: "#",   // TODO: UPDATE WITH OFFICIAL TCE DATA
