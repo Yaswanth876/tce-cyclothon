@@ -1,10 +1,10 @@
 export const FAQ_CATEGORIES = [
-  { id: "getting-started", label: "Getting Started" },
+  { id: "getting-started", label: "Ride Basics" },
   { id: "registration", label: "Registration" },
   { id: "event-day", label: "Event Day" },
   { id: "routes-safety", label: "Routes & Safety" },
   { id: "awards", label: "Awards" },
-  { id: "all", label: "All Questions" },
+  { id: "all", label: "All FAQs" },
 ] as const;
 
 export type FaqCategoryId = Exclude<
@@ -21,123 +21,120 @@ export interface FaqItem {
   answer: string;
 }
 
-const pendingDetails =
-  "This information has not been officially confirmed by the event organizers yet. We will update this answer when details are published.";
-
 export const FAQS: FaqItem[] = [
   {
     id: "what-is-tce-cyclothon",
     category: "getting-started",
     question: "What is TCE Cyclothon?",
     answer:
-      'TCE Cyclothon is a cycling initiative by Thiagarajar College of Engineering. The current campaign, "Pedal No to Drug," promotes drug awareness in line with UN SDG 3, Target 3.5. Event arrangements will be updated when officially confirmed.',
+      'TCE Cyclothon is a cycling event by Thiagarajar College of Engineering. The 2027 theme, "Pedal No to Drug," promotes drug awareness under United Nations Sustainable Development Goal 3, Target 3.5. Final arrangements are pending.',
   },
   {
     id: "who-can-participate",
     category: "getting-started",
-    question: "Who can participate?",
-    answer: `Age limits, eligibility, and consent requirements have not been confirmed. ${pendingDetails}`,
+    question: "Who can ride?",
+    answer: "Age, eligibility, and consent rules are not confirmed yet.",
   },
   {
     id: "cycling-experience",
     category: "getting-started",
-    question: "Is prior cycling experience required?",
-    answer: `The organizers have not confirmed experience requirements for each ride. ${pendingDetails}`,
+    question: "Do I need cycling experience?",
+    answer: "Experience requirements for each ride are pending confirmation.",
   },
   {
     id: "how-to-register",
     category: "registration",
     question: "How do I register?",
     answer:
-      "The official registration link is not available yet. We will add it here once the organizers publish it.",
+      "Registration details are pending. The official link will appear here when available.",
   },
   {
     id: "registration-fee",
     category: "registration",
-    question: "Is there a registration fee?",
-    answer: `The fee, including whether registration is free, has not been announced. ${pendingDetails}`,
+    question: "Is registration free?",
+    answer: "The fee, including whether the rides are free, is not confirmed.",
   },
   {
     id: "modify-registration",
     category: "registration",
-    question: "Can I modify my registration details?",
-    answer: `The process and deadline for changing registration details have not been announced. ${pendingDetails}`,
+    question: "Can I change my registration?",
+    answer: "Change options and deadlines are not confirmed.",
   },
   {
     id: "group-registration",
     category: "registration",
-    question: "Can I register as a group?",
-    answer: `Group registration options have not been confirmed. ${pendingDetails}`,
+    question: "Can I register with a group?",
+    answer: "Group registration details are pending confirmation.",
   },
   {
     id: "reporting-time",
     category: "event-day",
-    question: "What is the reporting time?",
-    answer: `The official reporting and flag-off schedule has not been confirmed. ${pendingDetails}`,
+    question: "When should I arrive?",
+    answer: "Report by 5:30 AM IST. The flag-off is at 6:00 AM IST.",
   },
   {
     id: "starting-point",
     category: "event-day",
-    question: "Where is the starting point?",
+    question: "Where does the ride start?",
     answer:
-      "The current event listing names Thiagarajar College of Engineering in Thiruparankundram as the venue. The exact start and finish points still need official confirmation.",
+      "The ride starts at TCE Gate, Thiagarajar College of Engineering, Thiruparankundram. Organizers will confirm the finish arrangements.",
   },
   {
     id: "what-to-bring",
     category: "event-day",
     question: "What should participants bring?",
     answer:
-      "Plan to bring a road-ready bicycle and a properly fitted helmet. The organizers have not published the final participant checklist yet.",
+      "Bring a road-ready bicycle and a properly fitted helmet. The final rider checklist is pending.",
   },
   {
     id: "refreshments",
     category: "event-day",
     question: "Will refreshments be provided?",
-    answer: `Refreshment stations and what they will provide have not been confirmed. ${pendingDetails}`,
+    answer: "Refreshment stops and what they will provide are not confirmed yet.",
   },
   {
     id: "ride-distances",
     category: "routes-safety",
-    question: "What are the available cycling distances?",
+    question: "Which distances can I ride?",
     answer:
-      "The current site lists 5 KM, 15 KM, and 25 KM rides. Organizers have not yet confirmed the final route details.",
+      "Choose 5 KM, 15 KM, or 25 KM. Final route maps are pending confirmation.",
   },
   {
     id: "helmet-policy",
     category: "routes-safety",
-    question: "Are helmets mandatory?",
+    question: "Do I need a helmet?",
     answer:
-      "The official helmet policy has not been announced. We recommend wearing a properly fitted helmet; the event's final safety rules will be shared here when confirmed.",
+      "Wear a properly fitted helmet. Organizers have not confirmed whether helmets are mandatory.",
   },
   {
     id: "safety-precautions",
     category: "routes-safety",
     question: "What safety precautions should participants follow?",
     answer:
-      "Wear a properly fitted helmet, follow traffic laws and marshal instructions, and ride within your ability. The organizers' full safety plan has not yet been published.",
+      "Wear a fitted helmet, follow traffic laws and marshal instructions, and ride within your ability. The full safety plan is pending.",
   },
   {
     id: "rain-policy",
     category: "routes-safety",
     question: "What happens if it rains?",
-    answer: `The weather, postponement, and cancellation policy has not been announced. ${pendingDetails}`,
+    answer: "The weather, postponement, and cancellation policy is not confirmed.",
   },
   {
     id: "prizes",
     category: "awards",
     question: "Are there prizes or awards?",
-    answer: `Prize categories and award details have not been confirmed. ${pendingDetails}`,
+    answer: "Prize categories and award details are pending confirmation.",
   },
   {
     id: "certificates",
     category: "awards",
     question: "Will participants receive certificates?",
-    answer: `Certificate availability and eligibility have not been confirmed. ${pendingDetails}`,
+    answer: "Certificate availability and eligibility are not confirmed.",
   },
   {
     id: "winner-selection",
     category: "awards",
     question: "How will winners be selected?",
-    answer: `The award categories and winner-selection criteria have not been published. ${pendingDetails}`,
+    answer: "Award categories and selection criteria are pending publication.",
   },
 ];

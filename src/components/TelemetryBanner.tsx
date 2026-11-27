@@ -2,16 +2,34 @@ import { eventConfig } from "@/data/eventConfig";
 import { CountdownTimer } from "./CountdownTimer";
 import { Calendar, MapPin, Clock, Bike } from "lucide-react";
 
+const EVENT_TIME_ZONE = "Asia/Kolkata";
+const EVENT_STARTS_AT = new Date("2027-02-07T06:00:00+05:30");
+const EVENT_START_TIMESTAMP = EVENT_STARTS_AT.getTime();
+const EVENT_DATE_LABEL = new Intl.DateTimeFormat("en-IN", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric",
+  timeZone: EVENT_TIME_ZONE,
+}).format(EVENT_STARTS_AT);
+const EVENT_TIME_LABEL = new Intl.DateTimeFormat("en-IN", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: true,
+  timeZone: EVENT_TIME_ZONE,
+})
+  .format(EVENT_STARTS_AT)
+  .toUpperCase();
+
 export function TelemetryBanner() {
   const { event } = eventConfig;
 
   const stats = [
-    { icon: Bike, label: "Max Distance", value: "25 KM", sub: "Champion Route" },
+    { icon: Bike, label: "Longest ride", value: "25 KM", sub: "Champion Route" },
     {
       icon: Calendar,
       label: "Event Date",
-      value: event.date ? new Date(event.date).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "TBD",
-      sub: event.date ? "Save the date" : "Announcement soon",
+      value: EVENT_DATE_LABEL,
+      sub: "Asia/Kolkata · IST",
     },
     {
       icon: Clock,
@@ -64,12 +82,12 @@ export function TelemetryBanner() {
           id="telemetry-heading"
           className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-[1.1] tracking-tight mb-3"
         >
-          Track Every Turn,{" "}
-          <span className="text-soft-mint">Ride Clean</span>
+          Ride clean.{" "}
+          <span className="text-soft-mint">Track every turn.</span>
         </h2>
         <p className="text-white/80 text-base md:text-lg mb-10 max-w-xl">
-          Real-time checkpoints, live leaderboards, and a finish-line experience
-          built for Madurai&apos;s anti-drug champions.
+          Track checkpoints and live leaderboards as you ride for a drug-free
+          Madurai.
         </p>
 
         {/* Stats grid */}
@@ -77,7 +95,7 @@ export function TelemetryBanner() {
           {stats.map(({ icon: Icon, label, value, sub }) => (
             <div
               key={label}
-              className="rounded-2xl bg-white/8 backdrop-blur-md border border-white/10 px-5 py-5"
+              className="rounded-2xl bg-white/8 backdrop-blur-md px-5 py-5"
             >
               <Icon size={16} className="text-soft-mint mb-2" aria-hidden="true" />
               <p className="text-white/75 text-xs font-semibold uppercase tracking-widest mb-1">
@@ -93,7 +111,10 @@ export function TelemetryBanner() {
 
         {/* Countdown */}
         <div className="mt-6 flex justify-start">
-          <CountdownTimer />
+          <CountdownTimer
+            targetTimestamp={EVENT_START_TIMESTAMP}
+            eventDateLabel={`${EVENT_DATE_LABEL} · ${EVENT_TIME_LABEL} IST`}
+          />
         </div>
       </div>
     </section>

@@ -18,12 +18,12 @@ export function RouteShowcaseSection() {
               id="route-heading"
               className="text-3xl sm:text-4xl md:text-5xl font-light text-foreground leading-[1.1] tracking-tight"
             >
-              Master the{" "}
-              <span className="text-primary">Route</span>
+              Choose your{" "}
+              <span className="text-primary">ride</span>
             </h2>
             <p className="text-muted mt-3 text-base max-w-lg">
-              Three distances across Madurai&apos;s most iconic landmarks.
-              Every checkpoint brings you closer to a drug-free finish line.
+              Choose 5, 15, or 25 km and ride past Madurai landmarks. Find your
+              distance.
             </p>
           </div>
 

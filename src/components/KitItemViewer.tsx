@@ -39,7 +39,7 @@ export function KitItemViewer({ items }: KitItemViewerProps) {
           />
           <SelectedIcon size={64} className="text-muted relative z-10" aria-hidden="true" />
           <p className="text-muted text-base font-semibold relative z-10">{selected?.name}</p>
-          <span className="text-xs text-muted relative z-10">[Photo coming soon]</span>
+          <span className="text-xs text-muted relative z-10">Image coming soon</span>
         </div>
 
         {/* Detail */}
@@ -48,7 +48,7 @@ export function KitItemViewer({ items }: KitItemViewerProps) {
             <h3 className="text-xl font-light text-foreground mb-2">{selected.name}</h3>
             <p className="text-muted text-sm leading-relaxed mb-4">{selected.description}</p>
             <p className="text-xs text-muted">
-              <span className="font-semibold text-foreground">Included in: </span>
+              <span className="font-semibold text-foreground">Ride options: </span>
               {selected.includedInCategories.join(", ")}
             </p>
           </div>

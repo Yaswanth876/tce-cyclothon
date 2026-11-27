@@ -19,14 +19,14 @@ export function MissionSection() {
               id="mission-heading"
               className="text-3xl sm:text-4xl md:text-5xl font-light text-foreground leading-[1.1] tracking-tight mb-5"
             >
-              Precision in Every{" "}
-              <span className="text-primary">Pedal Against Drugs</span>
+              Ride for a{" "}
+              <span className="text-primary">drug-free Madurai</span>
             </h2>
 
             <p className="text-muted text-base md:text-lg leading-relaxed mb-10 max-w-lg">
-              TCE Cyclothon channels the power of sport into awareness. Every
-              kilometer ridden is a commitment to a drug-free Madurai — a
-              healthier, stronger district for the next generation.
+              TCE Cyclothon turns cycling into drug-awareness action. Every
+              kilometer supports a healthier future for Madurai&apos;s next
+              generation.
             </p>
 
             {/* Category pills + route detail — interactive */}
@@ -41,16 +41,15 @@ export function MissionSection() {
               style={{ backgroundColor: "var(--brand-deep-green)" }}
             >
               <h3 className="text-white text-xl md:text-2xl font-light mb-2 leading-snug">
-                Join the{" "}
-                <span className="text-soft-mint">Anti-Drug Movement</span>
+                Take a{" "}
+                <span className="text-soft-mint">stand against drugs</span>
               </h3>
               <p className="text-white/60 text-sm leading-relaxed mb-6">
-                Sign our pledge and become part of Madurai&apos;s largest
-                youth-led anti-drug awareness initiative. Your ride, your
-                voice, your impact.
+                Sign the pledge. Ride with Madurai&apos;s youth for a
+                drug-free future.
               </p>
               <RegisterButton
-                label="Take the Pledge →"
+                label="Join the ride"
                 size="md"
                 className="w-full sm:w-auto"
               />
@@ -59,10 +58,10 @@ export function MissionSection() {
             {/* Stats grid */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { label: "Riders Expected", value: "500+" },
-                { label: "Km of Routes", value: "25" },
+                { label: "Expected riders", value: "500+" },
+                { label: "Longest ride", value: "25" },
                 { label: "Checkpoints", value: "13" },
-                { label: "SDG Goal", value: "3.5" },
+                { label: "SDG target", value: "3.5" },
               ].map(({ label, value }) => (
                 <div
                   key={label}

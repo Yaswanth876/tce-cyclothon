@@ -14,9 +14,8 @@ export function FaqSection() {
             id="faq-heading"
             className="text-4xl font-light leading-[1.02] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
           >
-            <span className="block">A little clarity.</span>
-            <span className="block text-muted">A lot less</span>
-            <span className="block text-muted">guesswork.</span>
+            <span className="block">Answers before</span>
+            <span className="block text-muted">you ride.</span>
           </h2>
 
           <a
@@ -32,10 +31,10 @@ export function FaqSection() {
             </span>
             <span className="min-w-0 flex-1">
               <span className="block text-sm font-semibold text-foreground">
-                Still have a question?
+                Need more help?
               </span>
               <span className="mt-1 block text-sm text-muted">
-                Contact the organizers
+                Email the organizers
               </span>
             </span>
             <ArrowUpRight

@@ -155,7 +155,7 @@ export function GalleryLightbox({
             </div>
 
             <span className="text-xs font-mono text-white/70">
-              Photographer: {photo.photographer}
+              Photo credit: {photo.photographer}
             </span>
           </div>
 

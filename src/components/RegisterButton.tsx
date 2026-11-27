@@ -14,7 +14,7 @@ export function RegisterButton({
   className,
   size = "md",
   variant = "solid",
-  label = "Register Now",
+  label = "Register now",
 }: RegisterButtonProps) {
   const sizeClasses = {
     sm: "px-4 py-2 text-sm",

@@ -16,7 +16,7 @@ import { GALLERY_PHOTOS, GalleryPhoto } from "@/data/galleryData";
 import { GalleryLightbox } from "./GalleryLightbox";
 
 const FILTER_OPTIONS = [
-  { id: "all", label: "All Photographs" },
+  { id: "all", label: "All photos" },
   { id: "2024", label: "2024 · Season 2" },
   { id: "2020", label: "2020 · Inaugural" },
 ];
@@ -197,11 +197,11 @@ export function GalleryMasonry() {
             id="gallery-heading"
             className="text-3xl font-light leading-tight tracking-tight text-white sm:text-4xl md:text-5xl"
           >
-            The rides that brought us here
+            The Cyclothon, in photos
           </h2>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base">
-            Browse 52 photographs from the 2020 and 2024 editions. Filter by
-            year, then open any moment for the full story.
+            Browse 52 photos from 2020 and 2024. Filter by year to revisit each
+            ride.
           </p>
         </header>
 
@@ -243,7 +243,7 @@ export function GalleryMasonry() {
         <div className="flex items-center gap-2 text-xs font-mono text-white/70">
           <Camera size={13} className="text-soft-mint" />
           <span>
-            Displaying {displayedPhotos.length} of {filteredPhotos.length} moments
+            Showing {displayedPhotos.length} of {filteredPhotos.length} photos
           </span>
         </div>
       </div>
@@ -361,7 +361,7 @@ export function GalleryMasonry() {
               )}
             >
               <span>
-                Load More Moments (+{Math.min(LOAD_MORE_INCREMENT, remainingCount)})
+                Load more photos (+{Math.min(LOAD_MORE_INCREMENT, remainingCount)})
               </span>
               <ChevronDown size={16} />
             </button>
@@ -375,20 +375,20 @@ export function GalleryMasonry() {
                 "transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] backdrop-blur-md"
               )}
             >
-              <span>Show All {filteredPhotos.length}</span>
+              <span>Show all {filteredPhotos.length}</span>
             </button>
           </div>
         ) : filteredPhotos.length > INITIAL_VISIBLE_COUNT ? (
           <div className="flex items-center gap-4">
             <span className="text-xs font-mono text-white/70">
-              Showing all {filteredPhotos.length} archival photographs
+              Showing all {filteredPhotos.length} photos
             </span>
             <button
               type="button"
               onClick={() => setVisibleCount(INITIAL_VISIBLE_COUNT)}
               className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold bg-forest-green/25 hover:bg-forest-green/45 text-white/80 hover:text-white border border-white/10 transition-colors"
             >
-              <span>Show Fewer</span>
+              <span>Show fewer</span>
               <ChevronUp size={14} />
             </button>
           </div>

@@ -44,13 +44,13 @@ export function HeroSection() {
           </h1>
 
           <p className="mb-7 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-            {event.edition} &mdash; {event.venue}
+            {event.edition} at {event.venue}
           </p>
 
           <div className="mb-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-charcoal sm:text-base">
             <span className="flex items-center gap-2">
               <Calendar size={16} className="shrink-0 text-forest-green" />
-              {event.date ?? "Date to be announced"}
+              {event.date ?? "07 Feb 2027"}
             </span>
             <span className="flex items-center gap-2">
               <MapPin size={16} className="shrink-0 text-forest-green" />
@@ -60,12 +60,12 @@ export function HeroSection() {
           </div>
 
           <div className="flex flex-wrap gap-3 sm:gap-4">
-            <RegisterButton size="lg" label="Register Now →" />
+            <RegisterButton size="lg" label="Register now" />
             <a
               href="#route"
               className="inline-flex items-center justify-center rounded-full border border-forest-green/40 px-8 py-4 text-base font-normal text-forest-green motion-safe:transition-colors motion-safe:duration-200 hover:border-forest-green hover:bg-forest-green/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest-green"
             >
-              Explore Route
+              Explore routes
             </a>
           </div>
         </div>

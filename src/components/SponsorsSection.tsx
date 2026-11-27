@@ -17,11 +17,10 @@ export function SponsorsSection() {
             id="sponsors-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-light text-foreground leading-[1.1] tracking-tight mb-3"
           >
-            Our <span className="text-primary">Partners</span>
+            Meet our <span className="text-primary">partners</span>
           </h2>
           <p className="text-muted text-base max-w-lg mx-auto">
-            Together, we build a drug-free Madurai. Join our community of
-            organisations committed to youth health and empowerment.
+            Join TCE in promoting youth health and drug awareness in Madurai.
           </p>
         </div>
 
@@ -30,7 +29,7 @@ export function SponsorsSection() {
           <div className="flex items-center gap-2 mb-4">
             <Building2 size={16} className="text-deep-green" aria-hidden="true" />
             <h3 className="text-xs font-light text-deep-green uppercase tracking-widest">
-              Organizing Institution
+              Organizing institution
             </h3>
           </div>
           <div className="rounded-card bg-primary-tint border border-deep-green/15 p-8 md:p-10 flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-left">
@@ -53,7 +52,7 @@ export function SponsorsSection() {
           <div className="flex items-center gap-2 mb-4">
             <Star size={16} className="text-energy-gold" aria-hidden="true" />
             <h3 className="text-xs font-light text-deep-green uppercase tracking-widest">
-              Title Sponsors
+              Title sponsors
             </h3>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -67,7 +66,7 @@ export function SponsorsSection() {
                     <Star size={22} className="text-energy-gold" aria-hidden="true" />
                   </div>
                   <p className="text-sm font-semibold text-muted">{s.name}</p>
-                  <p className="text-xs text-muted mt-0.5">Logo coming soon</p>
+                  <p className="text-xs text-muted mt-0.5">Details coming soon</p>
                 </div>
               </div>
             ))}
@@ -79,7 +78,7 @@ export function SponsorsSection() {
           <div className="flex items-center gap-2 mb-4">
             <Handshake size={16} className="text-forest-green" aria-hidden="true" />
             <h3 className="text-xs font-light text-forest-green uppercase tracking-widest">
-              Event Partners
+              Event partners
             </h3>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -90,7 +89,7 @@ export function SponsorsSection() {
               >
                 <div className="text-center">
                   <p className="text-xs font-semibold text-muted">{s.name}</p>
-                  <p className="text-[10px] text-muted mt-0.5">Coming soon</p>
+                  <p className="text-[10px] text-muted mt-0.5">Details coming soon</p>
                 </div>
               </div>
             ))}
@@ -104,10 +103,10 @@ export function SponsorsSection() {
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border-2 border-forest-green text-forest-green hover:bg-forest-green hover:text-white font-semibold px-8 py-3.5 text-sm motion-safe:transition-all motion-safe:duration-200 focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2"
           >
             <Handshake size={16} aria-hidden="true" />
-            Become a Sponsor
+            Sponsor the event
           </a>
           <p className="text-muted text-xs mt-3">
-            Contact us at{" "}
+            Sponsor inquiries:{" "}
             <a href="mailto:cyclothon@tce.edu" className="text-forest-green hover:underline">
               cyclothon@tce.edu
             </a>{" "}

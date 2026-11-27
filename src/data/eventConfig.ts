@@ -173,9 +173,9 @@ export const eventConfig: EventConfig = {
       category: "25 KM",
       label: "Champion",
       distanceKm: 25,
-      estimatedTime: "1h 15min – 1h 45min",
-      terrain: "Urban + rural + mild elevation",
-      elevation: "Moderate (~80m gain)",  // TODO: UPDATE WITH OFFICIAL TCE DATA
+      estimatedTime: "1 hr 15 min to 1 hr 45 min",
+      terrain: "Urban and rural roads, mild climbs",
+      elevation: "Moderate, about 80 m gain",  // TODO: UPDATE WITH OFFICIAL TCE DATA
       checkpoints: [
         {
           name: "TCE Main Gate",
@@ -221,7 +221,7 @@ export const eventConfig: EventConfig = {
       id: "jersey",
       name: "SDG 3 Green Jersey",
       description:
-        "Official anti-drug awareness cycling jersey in Kelly Green, featuring UN SDG 3 branding and 'Pedal No to Drug' messaging.",
+        "Kelly Green cycling jersey with UN SDG 3 branding and the Pedal No to Drug message.",
       imageUrl: "/images/kit/jersey.png",   // TODO: UPDATE WITH OFFICIAL TCE DATA
       includedInCategories: ["5 KM", "15 KM", "25 KM"],
     },
@@ -229,7 +229,7 @@ export const eventConfig: EventConfig = {
       id: "bib",
       name: "Race Bib Number",
       description:
-        "Personalized bib with rider number, name, and blood group. Scan QR for real-time tracking.",
+        "Personalized with your rider number, name, and blood group. Scan the QR code for live tracking.",
       imageUrl: "/images/kit/bib.png",
       includedInCategories: ["5 KM", "15 KM", "25 KM"],
     },
@@ -237,7 +237,7 @@ export const eventConfig: EventConfig = {
       id: "medal",
       name: "Finisher Medal",
       description:
-        "Custom die-cast medal with anti-drug emblem. Category-specific ribbon colors.",
+        "Custom die-cast medal with an anti-drug emblem and a category-color ribbon.",
       imageUrl: "/images/kit/medal.png",
       includedInCategories: ["5 KM", "15 KM", "25 KM"],
     },
@@ -245,7 +245,7 @@ export const eventConfig: EventConfig = {
       id: "hydration",
       name: "Hydration Pack",
       description:
-        "Water bottle + energy bar to keep you fuelled through the route.",
+        "Water bottle and energy bar for the 15 KM and 25 KM rides.",
       imageUrl: "/images/kit/hydration.png",
       includedInCategories: ["15 KM", "25 KM"],
     },
@@ -253,7 +253,7 @@ export const eventConfig: EventConfig = {
       id: "ecert",
       name: "E-Certificate",
       description:
-        "Digital participation/completion certificate with QR verification. Share instantly.",
+        "Digital participation or completion certificate with QR verification, ready to share.",
       imageUrl: "/images/kit/ecert.png",
       includedInCategories: ["5 KM", "15 KM", "25 KM"],
     },
@@ -267,15 +267,15 @@ export const eventConfig: EventConfig = {
     },
     titleSponsors: [
       // TODO: UPDATE WITH OFFICIAL TCE DATA
-      { name: "Title Sponsor 1", logoUrl: "/images/sponsors/placeholder-title-1.png", tier: "title" },
-      { name: "Title Sponsor 2", logoUrl: "/images/sponsors/placeholder-title-2.png", tier: "title" },
+      { name: "Title sponsor", logoUrl: "/images/sponsors/placeholder-title-1.png", tier: "title" },
+      { name: "Title sponsor", logoUrl: "/images/sponsors/placeholder-title-2.png", tier: "title" },
     ],
     eventPartners: [
       // TODO: UPDATE WITH OFFICIAL TCE DATA
-      { name: "Event Partner 1", logoUrl: "/images/sponsors/placeholder-partner-1.png", tier: "partner" },
-      { name: "Event Partner 2", logoUrl: "/images/sponsors/placeholder-partner-2.png", tier: "partner" },
-      { name: "Event Partner 3", logoUrl: "/images/sponsors/placeholder-partner-3.png", tier: "partner" },
-      { name: "Event Partner 4", logoUrl: "/images/sponsors/placeholder-partner-4.png", tier: "partner" },
+      { name: "Event partner", logoUrl: "/images/sponsors/placeholder-partner-1.png", tier: "partner" },
+      { name: "Event partner", logoUrl: "/images/sponsors/placeholder-partner-2.png", tier: "partner" },
+      { name: "Event partner", logoUrl: "/images/sponsors/placeholder-partner-3.png", tier: "partner" },
+      { name: "Event partner", logoUrl: "/images/sponsors/placeholder-partner-4.png", tier: "partner" },
     ],
   },
 

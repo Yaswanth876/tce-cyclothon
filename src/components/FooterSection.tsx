@@ -7,7 +7,7 @@ const FOOTER_LINKS = [
   { label: "Sponsors", href: "#sponsors" },
   { label: "FAQ", href: "#faq" },
   { label: "Event poster", href: "/images/gallery/tce-cyclothon-launch.jpg" },
-  { label: "Get in touch", href: "mailto:cyclothon@tce.edu" },
+  { label: "Contact", href: "mailto:cyclothon@tce.edu" },
   { label: "Back to top", href: "#hero" },
 ];
 
@@ -28,15 +28,15 @@ export function FooterSection() {
             </h2>
 
             <p className="mt-6 max-w-xl break-words text-base leading-relaxed text-white/75 sm:mt-8 sm:text-lg lg:mt-10">
-              {event.edition} · {event.city}, {event.state}. Every ride moves us
-              toward a healthier future.
+              Join riders across {event.city} for the 2027 Pedal No to Drug
+              Cyclothon.
             </p>
 
             <a
               href={event.registrationUrl}
               className="mt-8 inline-flex min-h-12 w-full max-w-sm items-center justify-center gap-3 rounded-full bg-white px-5 py-3 text-sm font-normal text-deep-green motion-safe:transition-colors hover:bg-soft-mint focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:mt-10 sm:w-fit sm:px-7 lg:mt-12"
             >
-              Take the pledge
+              Register now
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </div>

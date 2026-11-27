@@ -50,7 +50,7 @@ export function CinematicPreloader({
   const charRectsRef = useRef<{ left: number; right: number; width: number; center: number }[]>([]);
 
   // The loading text
-  const loadingText = "TCE CYCLOTHON 2026";
+  const loadingText = "TCE CYCLOTHON 2027";
 
   const allCharacters = useMemo<CharInfo[]>(() => {
     return loadingText.split("").map((char, index) => ({

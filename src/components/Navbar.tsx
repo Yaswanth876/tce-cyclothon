@@ -226,7 +226,7 @@ export function Navbar({
             onClick={handleRegisterClick}
             className="hidden min-h-11 items-center gap-2 whitespace-nowrap rounded-full bg-forest-green px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-deep-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2 motion-reduce:transition-none xl:inline-flex"
           >
-            Join the track <span aria-hidden="true">↗</span>
+            Join the ride <span aria-hidden="true">↗</span>
           </a>
 
           <button
@@ -273,7 +273,7 @@ export function Navbar({
               }}
               className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-forest-green px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-deep-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2 motion-reduce:transition-none"
             >
-              Join the track <span aria-hidden="true">↗</span>
+              Join the ride <span aria-hidden="true">↗</span>
             </a>
           </div>
         </nav>

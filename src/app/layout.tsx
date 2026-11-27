@@ -10,9 +10,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "TCE Cyclothon — Pedal No to Drug | Madurai District Edition",
+  title: "TCE Cyclothon 2027 | Pedal No to Drug",
   description:
-    "Join Thiagarajar College of Engineering's cyclothon for a drug-free Madurai. Choose your distance: 5 KM Fun Ride, 15 KM Challenger, or 25 KM Champion. Organized under UN SDG 3 · Target 3.5.",
+    "Join TCE Cyclothon on 7 February 2027 in Madurai. Choose a 5, 15, or 25 KM ride and support drug awareness under United Nations Sustainable Development Goal 3, Target 3.5.",
   keywords: [
     "TCE Cyclothon",
     "Pedal No to Drug",
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     "Thiagarajar College of Engineering",
   ],
   openGraph: {
-    title: "TCE Cyclothon — Pedal No to Drug",
+    title: "TCE Cyclothon 2027 | Pedal No to Drug",
     description:
-      "Madurai District Edition. 5 KM · 15 KM · 25 KM. Join us for a drug-free future.",
+      "TCE Cyclothon 2027 in Madurai. Ride 5, 15, or 25 KM to support drug awareness.",
     type: "website",
     locale: "en_IN",
   },

@@ -40,7 +40,7 @@ export function FaqExplorer() {
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search your questions..."
+          placeholder="Search FAQs"
           className="min-h-16 w-full rounded-full border border-border bg-surface py-4 pl-14 pr-6 text-base text-foreground placeholder:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2"
         />
       </div>
@@ -86,17 +86,17 @@ export function FaqExplorer() {
           className="border-y border-border py-10 text-center sm:py-12"
         >
           <h3 className="text-lg font-light text-foreground">
-            No matching questions
+            No matches
           </h3>
           <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
-            Try a different search or choose another category.
+            Try another search or choose a category.
           </p>
           <button
             type="button"
             onClick={clearFilters}
             className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full px-4 text-sm font-semibold text-forest-green transition-colors hover:bg-primary-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2 motion-reduce:transition-none"
           >
-            Clear search and filters
+            Reset filters
           </button>
         </div>
       )}

@@ -20,11 +20,11 @@ export function RiderKitSection() {
                 className="text-3xl sm:text-4xl md:text-5xl font-light text-foreground leading-[1.1] tracking-tight"
               >
                 Your{" "}
-                <span className="text-primary">SDG 3 Rider Kit</span>
+                <span className="text-primary">SDG 3 rider kit</span>
               </h2>
               <p className="text-muted mt-3 text-base max-w-lg">
-                Every registered rider receives an exclusive kit celebrating
-                Madurai&apos;s commitment to a drug-free future.
+                Explore the five kit items. Hydration packs come with the 15 KM
+                and 25 KM rides.
               </p>
             </div>
             <div className="shrink-0">

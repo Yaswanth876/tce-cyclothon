@@ -4,7 +4,7 @@ const EDITIONS = [
     edition: "Inaugural ride",
     title: "Pedal for a Purpose",
     description:
-      "A ride for cancer awareness and healthier lifestyles, held on International Women's Day.",
+      "An International Women's Day ride for cancer awareness and healthier living.",
     impact: "300+ riders · Cancer awareness",
   },
   {
@@ -12,15 +12,15 @@ const EDITIONS = [
     edition: "Season 2",
     title: "Cycle to Recycle",
     description:
-      "Cyclists rode a 21 KM Madurai circuit to promote plastic reuse and environmental care.",
+      "Riders covered a 21 KM Madurai circuit to promote plastic reuse and care for the environment.",
     impact: "450+ riders · 21 KM circuit",
   },
   {
-    period: "Current edition",
+    period: "February 2027",
     edition: "Madurai District Edition",
     title: "Pedal No to Drug",
     description:
-      "Young people unite around drug awareness, with 5 KM, 15 KM, and 25 KM rides.",
+      "The 2027 edition backs drug awareness with 5 KM, 15 KM, and 25 KM rides.",
     impact: "Three ride distances · SDG 3.5",
   },
 ];
@@ -34,13 +34,13 @@ export function CyclothonHistorySection() {
       <div className="mx-auto max-w-7xl">
         <header className="mb-12 max-w-2xl">
           <p className="mb-3 text-sm font-semibold text-forest-green">
-            A growing tradition
+            Three editions in Madurai
           </p>
           <h2
             id="history-heading"
             className="text-3xl font-light leading-tight tracking-tight text-foreground sm:text-4xl"
           >
-            Each ride carries the story forward
+            TCE Cyclothon through the years
           </h2>
         </header>
 
