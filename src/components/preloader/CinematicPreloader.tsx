@@ -429,7 +429,7 @@ export function CinematicPreloader({
       role="dialog"
       aria-modal="true"
       aria-label="TCE Cyclothon loading screen"
-      className="fixed inset-0 z-[9999] bg-white text-black overflow-hidden select-none flex flex-col justify-between"
+      className="fixed inset-0 z-[9999] bg-background text-deep-green overflow-hidden select-none flex flex-col justify-between"
       style={{
         width: "100vw",
         height: "100vh",
@@ -443,11 +443,11 @@ export function CinematicPreloader({
           type="button"
           onClick={handleComplete}
           aria-label="Skip loading animation"
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/5 hover:bg-black/10 border border-black/15 text-black/75 hover:text-black font-mono text-xs transition-all cursor-pointer"
+          className="inline-flex min-h-11 items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-deep-green/5 hover:bg-primary-tint border border-deep-green/15 text-deep-green/80 hover:text-deep-green font-mono text-xs transition-all cursor-pointer"
         >
           <FastForward size={13} />
           <span>SKIP</span>
-          <kbd className="hidden md:inline px-1 py-0.5 rounded bg-black/10 text-[10px] text-black/60 border border-black/10">
+          <kbd className="hidden md:inline px-1 py-0.5 rounded bg-deep-green/10 text-[10px] text-deep-green/80 border border-deep-green/10">
             ESC
           </kbd>
         </button>
@@ -460,14 +460,14 @@ export function CinematicPreloader({
         ref={textContainerRef}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-center max-w-4xl px-4 pointer-events-none select-none"
       >
-        <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-widest uppercase leading-none text-black whitespace-nowrap">
+        <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-widest uppercase leading-none text-deep-green whitespace-nowrap">
           {allCharacters.map((c) => (
             <span
               key={`char-${c.index}`}
               ref={(el) => {
                 charElementsRef.current[c.index] = el;
               }}
-              className={`inline-block transition-transform duration-75 text-black ${
+              className={`inline-block transition-transform duration-75 text-deep-green ${
                 c.isSpace ? "w-2 sm:w-3 md:w-4" : ""
               }`}
               style={{
@@ -482,7 +482,7 @@ export function CinematicPreloader({
         {showProgress && (
           <div
             ref={progressRef}
-            className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-black/45 mt-4 tabular-nums"
+            className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-deep-green/75 mt-4 tabular-nums"
           >
             {progress}%
           </div>

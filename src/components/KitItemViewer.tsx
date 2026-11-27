@@ -13,12 +13,6 @@ const KIT_ICONS: Record<string, React.ElementType> = {
   ecert: FileCheck,
 };
 
-const CATEGORY_COLOR: Record<string, string> = {
-  "5 KM": "bg-blue-100 text-blue-700",
-  "15 KM": "bg-amber-100 text-amber-700",
-  "25 KM": "bg-primary-tint text-primary",
-};
-
 interface KitItemViewerProps {
   items: KitItem[];
 }
@@ -32,43 +26,31 @@ export function KitItemViewer({ items }: KitItemViewerProps) {
     <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
       {/* Large preview */}
       <div>
-        <div className="rounded-3xl bg-zinc-100 border border-border h-72 md:h-96 flex flex-col items-center justify-center gap-4 relative overflow-hidden">
+        <div className="rounded-card bg-background border border-border h-72 md:h-96 flex flex-col items-center justify-center gap-4 relative overflow-hidden">
           {/* Subtle pattern */}
           <div
             className="absolute inset-0 opacity-[0.03]"
             style={{
               backgroundImage:
-                "repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 0, transparent 50%)",
+                "repeating-linear-gradient(45deg, color-mix(in srgb, var(--brand-deep-green) 10%, transparent) 0, color-mix(in srgb, var(--brand-deep-green) 10%, transparent) 1px, transparent 0, transparent 50%)",
               backgroundSize: "20px 20px",
             }}
             aria-hidden="true"
           />
-          <SelectedIcon size={64} className="text-zinc-400 relative z-10" aria-hidden="true" />
-          <p className="text-zinc-500 text-base font-semibold relative z-10">{selected?.name}</p>
-          <span className="text-xs text-zinc-400 relative z-10">[Photo coming soon]</span>
+          <SelectedIcon size={64} className="text-muted relative z-10" aria-hidden="true" />
+          <p className="text-muted text-base font-semibold relative z-10">{selected?.name}</p>
+          <span className="text-xs text-muted relative z-10">[Photo coming soon]</span>
         </div>
 
         {/* Detail */}
         {selected && (
           <div className="mt-6">
-            <h3 className="text-xl font-bold text-foreground mb-2">{selected.name}</h3>
+            <h3 className="text-xl font-light text-foreground mb-2">{selected.name}</h3>
             <p className="text-muted text-sm leading-relaxed mb-4">{selected.description}</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="text-xs font-semibold text-muted uppercase tracking-widest mr-1 self-center">
-                Included in:
-              </span>
-              {selected.includedInCategories.map((cat) => (
-                <span
-                  key={cat}
-                  className={cn(
-                    "text-xs font-semibold rounded-full px-3 py-1",
-                    CATEGORY_COLOR[cat] ?? "bg-zinc-100 text-zinc-600"
-                  )}
-                >
-                  {cat}
-                </span>
-              ))}
-            </div>
+            <p className="text-xs text-muted">
+              <span className="font-semibold text-foreground">Included in: </span>
+              {selected.includedInCategories.join(", ")}
+            </p>
           </div>
         )}
       </div>
@@ -93,18 +75,18 @@ export function KitItemViewer({ items }: KitItemViewerProps) {
                 "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
                 selectedId === item.id
                   ? "border-primary bg-primary-tint ring-1 ring-primary shadow-sm"
-                  : "border-border bg-zinc-50 hover:border-primary/30 hover:bg-primary-tint/50"
+                  :                   "border-border bg-background hover:border-forest-green/30 hover:bg-primary-tint/50"
               )}
             >
               <Icon
                 size={22}
-                className={selectedId === item.id ? "text-primary" : "text-zinc-400"}
+                className={selectedId === item.id ? "text-forest-green" : "text-muted"}
                 aria-hidden="true"
               />
               <span
                 className={cn(
                   "text-[10px] font-semibold leading-tight px-1",
-                  selectedId === item.id ? "text-primary" : "text-muted"
+                  selectedId === item.id ? "text-forest-green" : "text-muted"
                 )}
               >
                 {item.name.split(" ").slice(0, 2).join(" ")}

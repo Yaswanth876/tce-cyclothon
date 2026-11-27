@@ -24,7 +24,7 @@ export interface InteractiveBmxCyclistProps {
   interactionRadius?: number;
   /** Global speed multiplier (default: 1.0) */
   speedMultiplier?: number;
-  /** Custom ink color for the silhouette (default: "#0A0A0A") */
+  /** Custom ink color for the silhouette (default: deep brand green) */
   ink?: string;
   /** Enable playful speech bubble callouts (default: true) */
   enableSpeechBubbles?: boolean;
@@ -108,7 +108,7 @@ const STUNT_SPEECH = [
 ];
 
 const AMBIENT_SPEECH = [
-  "Pedal to No Drug!",
+  "Pedal No to Drug!",
   "TCE 2026!",
   "SDG 3 · Target 3.5",
   "let's ride!",
@@ -126,7 +126,7 @@ const AMBIENT_SPEECH = [
 export function InteractiveBmxCyclist({
   interactionRadius = 160,
   speedMultiplier = 1.0,
-  ink = "#0A0A0A",
+  ink = "var(--brand-deep-green)",
   enableSpeechBubbles = true,
   enableStunts = true,
 }: InteractiveBmxCyclistProps) {
@@ -283,7 +283,14 @@ export function InteractiveBmxCyclist({
         life: 20 + Math.random() * 16,
         age: 0,
         size: Math.random() < 0.35 ? 2.2 : 1.4,
-        color: Math.random() < 0.65 ? "#4C9F38" : "#EBF6E8",
+        color:
+          Math.random() < 0.65
+            ? getComputedStyle(document.documentElement)
+                .getPropertyValue("--brand-primary")
+                .trim()
+            : getComputedStyle(document.documentElement)
+                .getPropertyValue("--brand-soft-mint")
+                .trim(),
       });
     }
   }, []);
@@ -603,7 +610,7 @@ export function InteractiveBmxCyclist({
           pos.x += vel.vx * speedMultiplier;
           if (onPlatformRef.current && pos.x >= onPlatformRef.current.x + 8) {
             setSimState("RIDING");
-            triggerSpeech(["Let's go!", "TCE Cyclothon 2026", "Pedal to No Drug!"]);
+            triggerSpeech(["Let's go!", "TCE Cyclothon 2026", "Pedal No to Drug!"]);
           }
           break;
         }
@@ -948,7 +955,7 @@ export function InteractiveBmxCyclist({
         style={{ transform: "translate3d(-999px, -999px, 0)" }}
       >
         <div className="relative -translate-x-1/2 -translate-y-full">
-          <div className="px-2.5 py-1 rounded-full bg-obsidian/90 backdrop-blur-md border border-primary/50 text-primary font-mono text-[11px] font-bold shadow-lg shadow-primary/20 tracking-wide flex items-center gap-1.5 whitespace-nowrap">
+          <div className="px-2.5 py-1 rounded-full bg-deep-green/90 backdrop-blur-md border border-soft-mint/50 text-soft-mint font-mono text-[11px] font-bold shadow-card tracking-wide flex items-center gap-1.5 whitespace-nowrap">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span ref={bubbleTextRef}>whoa!</span>
           </div>
@@ -977,7 +984,7 @@ export function InteractiveBmxCyclist({
           bikePitch={bikePitch}
           ink={ink}
           glow={true}
-          className="w-full h-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]"
+          className="w-full h-auto"
         />
       </div>
     </aside>

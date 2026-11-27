@@ -24,9 +24,9 @@ export function RegisterButton({
 
   const variantClasses = {
     solid:
-      "bg-primary text-white hover:bg-primary-hover active:scale-[0.98] shadow-sm",
+      "bg-forest-green text-white hover:bg-deep-green active:scale-[0.98] shadow-sm",
     outline:
-      "border-2 border-primary text-primary hover:bg-primary hover:text-white",
+      "border-2 border-forest-green text-forest-green hover:bg-forest-green hover:text-white",
   };
 
   return (
@@ -35,7 +35,7 @@ export function RegisterButton({
       className={cn(
         "inline-flex items-center justify-center gap-2 rounded-full font-semibold",
         "motion-safe:transition-all motion-safe:duration-200",
-        "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+        "focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2",
         sizeClasses[size],
         variantClasses[variant],
         className

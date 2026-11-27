@@ -30,16 +30,16 @@ export function GalleryArchiveGrid() {
       : GALLERY_PHOTOS.filter((p) => p.year === selectedFilter);
 
   return (
-    <section className="py-20 bg-neutral-950 border-t border-white/10">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-deep-green py-section text-white border-t border-white/10">
+      <div className="mx-auto max-w-site px-gutter">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-primary uppercase tracking-widest font-bold mb-1">
+            <div className="flex items-center gap-2 text-xs font-mono text-forest-green uppercase tracking-widest font-bold mb-1">
               <Camera size={14} />
               <span>Full Archive Collection</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-light text-white tracking-tight">
               Archival Photography Records
             </h2>
           </div>
@@ -53,9 +53,9 @@ export function GalleryArchiveGrid() {
                 onClick={() => setSelectedFilter(tab.id)}
                 className={cn(
                   "px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200",
-                  selectedFilter === tab.id
-                    ? "bg-primary text-white shadow-md shadow-primary/20"
-                    : "bg-white/5 hover:bg-white/10 text-neutral-300 border border-white/10"
+                      selectedFilter === tab.id
+                        ? "bg-forest-green text-white shadow-sm"
+                        : "bg-white/5 hover:bg-white/10 text-white/80 border border-white/10"
                 )}
               >
                 {tab.label}
@@ -70,10 +70,10 @@ export function GalleryArchiveGrid() {
             <article
               key={photo.id}
               onClick={() => setLightboxPhoto(photo)}
-              className="group cursor-pointer rounded-3xl overflow-hidden bg-neutral-900/60 border border-white/10 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col justify-between"
+              className="group cursor-pointer rounded-card overflow-hidden bg-forest-green/20 border border-white/10 hover:border-soft-mint/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-card flex flex-col justify-between"
             >
               {/* Photo Frame */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-deep-green">
                 <Image
                   src={photo.imageUrl}
                   alt={photo.title}
@@ -83,22 +83,22 @@ export function GalleryArchiveGrid() {
                   style={{ objectPosition: photo.objectPosition }}
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-60 group-hover:opacity-40 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-deep-green/90 via-transparent to-deep-green/20 opacity-60 group-hover:opacity-40 transition-opacity" />
 
                 {/* Badges on Top */}
                 <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 px-2.5 py-1 text-[11px] font-mono font-bold text-white">
-                    <Calendar size={11} className="text-primary" />
+                  <span className="inline-flex items-center gap-1 rounded-full bg-deep-green/80 backdrop-blur-md border border-white/15 px-2.5 py-1 text-[11px] font-mono font-bold text-white">
+                    <Calendar size={11} className="text-soft-mint" />
                     {photo.year}
                   </span>
 
-                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-deep-green/80 backdrop-blur-md border border-white/15 text-white opacity-0 group-hover:opacity-100 transition-opacity">
                     <Maximize2 size={13} />
                   </span>
                 </div>
 
                 {/* Bottom Pill */}
-                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[11px] font-mono text-neutral-300 pointer-events-none">
+                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[11px] font-mono text-white/80 pointer-events-none">
                   <span className="truncate max-w-[200px]">
                     {photo.location}
                   </span>
@@ -109,23 +109,23 @@ export function GalleryArchiveGrid() {
               {/* Editorial Card Body */}
               <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-1.5 text-xs text-primary font-medium mb-1.5">
+                  <div className="flex items-center gap-1.5 text-xs text-soft-mint font-light mb-1.5">
                     <MapPin size={12} />
                     <span>{photo.location}</span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-primary transition-colors">
+                  <h3 className="text-lg font-light text-white tracking-tight group-hover:text-soft-mint transition-colors">
                     {photo.title}
                   </h3>
 
-                  <p className="mt-2 text-xs sm:text-sm text-neutral-400 line-clamp-3 leading-relaxed">
+                  <p className="mt-2 text-xs sm:text-sm text-white/75 line-clamp-3 leading-relaxed">
                     {photo.caption}
                   </p>
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-neutral-400">
+                <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-white/70">
                   <span>{photo.routeDistance}</span>
-                  <span className="text-neutral-400">
+                  <span className="text-white/70">
                     {photo.photographer}
                   </span>
                 </div>

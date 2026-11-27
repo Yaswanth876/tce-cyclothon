@@ -108,7 +108,7 @@ export function ScrollCyclistProgress() {
           style={{
             width: `${bikeWidth}px`,
             filter:
-              "drop-shadow(0 0 1.2px rgba(255,255,255,0.9)) drop-shadow(0 2px 4px rgba(0,0,0,0.4))",
+              "drop-shadow(0 0 1.2px color-mix(in srgb, var(--brand-white) 90%, transparent)) drop-shadow(0 2px 4px color-mix(in srgb, var(--brand-deep-green) 40%, transparent))",
           }}
           className="relative transition-transform duration-75"
         >
@@ -133,11 +133,11 @@ export function ScrollCyclistProgress() {
         aria-label="Scroll percentage through page"
         onClick={handleTrackClick}
         title="Scroll progress. Click anywhere to jump."
-        className="relative h-[3.5px] w-full bg-black/10 dark:bg-white/15 backdrop-blur-sm cursor-pointer transition-all hover:h-[5px]"
+        className="relative h-[3.5px] w-full bg-deep-green/15 backdrop-blur-sm cursor-pointer transition-all hover:h-[5px]"
       >
         {/* Filled Progress Bar */}
         <div
-          className="h-full bg-gradient-to-r from-primary via-sdg-green to-primary shadow-[0_0_8px_rgba(76,159,56,0.5)] transition-all duration-75 ease-out"
+          className="h-full bg-gradient-to-r from-forest-green via-primary to-forest-green transition-all duration-75 ease-out"
           style={{
             width: `${scrollProgress * 100}%`,
           }}

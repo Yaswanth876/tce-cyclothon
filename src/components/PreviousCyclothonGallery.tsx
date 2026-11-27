@@ -47,8 +47,8 @@ export function PreviousCyclothonGallery({
     <section
       id="gallery"
       className={cn(
-        "relative overflow-hidden py-20 md:py-28 transition-colors",
-        isStandalonePage ? "bg-neutral-950 text-white" : "bg-neutral-950 text-white"
+        "relative overflow-hidden py-section transition-colors",
+        isStandalonePage ? "bg-deep-green text-white" : "bg-deep-green text-white"
       )}
       aria-labelledby="gallery-heading"
     >
@@ -58,27 +58,27 @@ export function PreviousCyclothonGallery({
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -bottom-40 -right-40 h-[500px] w-[500px] rounded-full bg-[#6E1A27]/20 blur-[140px]"
+        className="pointer-events-none absolute -bottom-40 -right-40 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[140px]"
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-site px-gutter">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-14">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-semibold text-primary mb-4 backdrop-blur-md">
-              <Sparkles size={13} className="text-primary animate-pulse" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-soft-mint/30 bg-soft-mint/10 px-3.5 py-1 text-xs font-semibold text-soft-mint mb-4 backdrop-blur-md">
+              <Sparkles size={13} className="text-soft-mint animate-pulse" />
               <span>Historical Moments & Legacy</span>
             </div>
 
             <h2
               id="gallery-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-[1.1]"
+              className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-white leading-[1.1]"
             >
-              Previous Cyclothon <span className="text-primary">Gallery</span>
+              Previous Cyclothon <span className="text-soft-mint">Gallery</span>
             </h2>
 
-            <p className="mt-3.5 text-base sm:text-lg text-neutral-400 font-normal leading-relaxed">
+            <p className="mt-3.5 text-base sm:text-lg text-white/75 font-normal leading-relaxed">
               Real photographs and archival memories from previous TCE Cyclothon
               editions. Over 450+ riders united across Madurai to pedal for a
               greener, healthier tomorrow.
@@ -101,11 +101,11 @@ export function PreviousCyclothonGallery({
               </Link>
             )}
 
-            <div className="inline-flex rounded-full border border-white/10 bg-white/5 p-1 text-xs font-medium text-neutral-400 backdrop-blur-md">
-              <span className="px-3 py-1 rounded-full bg-primary/20 text-primary font-semibold">
+            <div className="inline-flex rounded-full border border-white/10 bg-white/5 p-1 text-xs font-medium text-white/70 backdrop-blur-md">
+              <span className="px-3 py-1 rounded-full bg-soft-mint/15 text-soft-mint font-semibold">
                 2024 · Season 2
               </span>
-              <span className="px-3 py-1 rounded-full text-neutral-300">
+              <span className="px-3 py-1 rounded-full text-white/80">
                 2020 · Inaugural
               </span>
             </div>
@@ -117,7 +117,7 @@ export function PreviousCyclothonGallery({
           Desktop & Tablet: Horizontal expandable panels with custom cubic-bezier transitions.
           Mobile: Vertical or touch-expandable accordion with full tap interaction.
         */}
-        <div className="hidden md:flex w-full h-[580px] lg:h-[620px] gap-3 lg:gap-4 p-3 rounded-3xl bg-neutral-900/60 border border-white/10 shadow-2xl backdrop-blur-sm overflow-hidden">
+        <div className="hidden md:flex w-full h-[580px] lg:h-[620px] gap-3 lg:gap-4 p-3 rounded-card bg-forest-green/20 border border-white/10 shadow-card backdrop-blur-sm overflow-hidden">
           {GALLERY_PHOTOS.map((photo) => {
             const isExpanded = currentExpandedId === photo.id;
 
@@ -131,7 +131,7 @@ export function PreviousCyclothonGallery({
                   "relative h-full rounded-2xl overflow-hidden cursor-pointer",
                   "border border-white/10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] select-none",
                   isExpanded
-                    ? "flex-[3.8] lg:flex-[4.2] shadow-2xl ring-1 ring-primary/40"
+                    ? "flex-[3.8] lg:flex-[4.2] shadow-card ring-1 ring-soft-mint/40"
                     : "flex-[0.8] lg:flex-[1.0] opacity-80 hover:opacity-100"
                 )}
                 style={{
@@ -139,7 +139,7 @@ export function PreviousCyclothonGallery({
                 }}
               >
                 {/* Background Image with Zoom */}
-                <div className="absolute inset-0 overflow-hidden bg-neutral-900">
+                <div className="absolute inset-0 overflow-hidden bg-deep-green">
                   <Image
                     src={photo.imageUrl}
                     alt={photo.title}
@@ -158,8 +158,8 @@ export function PreviousCyclothonGallery({
                     className={cn(
                       "absolute inset-0 transition-opacity duration-500",
                       isExpanded
-                        ? "bg-gradient-to-t from-black/95 via-black/35 to-black/20"
-                        : "bg-gradient-to-t from-black/90 via-black/60 to-black/40"
+                        ? "bg-gradient-to-t from-deep-green/95 via-deep-green/45 to-deep-green/20"
+                        : "bg-gradient-to-t from-deep-green/90 via-deep-green/65 to-deep-green/45"
                     )}
                   />
                 </div>
@@ -171,7 +171,7 @@ export function PreviousCyclothonGallery({
                     isExpanded ? "opacity-0 pointer-events-none" : "opacity-100"
                   )}
                 >
-                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-black/60 border border-white/15 text-white/80 backdrop-blur-md">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-deep-green/80 border border-white/15 text-white/80 backdrop-blur-md">
                     <span className="text-[10px] font-mono font-bold">
                       {photo.year}
                     </span>
@@ -179,7 +179,7 @@ export function PreviousCyclothonGallery({
 
                   <div className="flex-1 flex items-center justify-center my-auto">
                     <span
-                      className="text-xs font-semibold tracking-widest text-neutral-300 uppercase whitespace-nowrap"
+                      className="text-xs font-semibold tracking-widest text-white/80 uppercase whitespace-nowrap"
                       style={{
                         writingMode: "vertical-rl",
                         transform: "rotate(180deg)",
@@ -189,8 +189,8 @@ export function PreviousCyclothonGallery({
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-center text-[10px] font-mono text-neutral-400">
-                    <Eye size={13} className="text-neutral-400" />
+                  <div className="flex items-center justify-center text-[10px] font-mono text-white/70">
+                    <Eye size={13} className="text-white/70" />
                   </div>
                 </div>
 
@@ -206,11 +206,11 @@ export function PreviousCyclothonGallery({
                   {/* Top Header inside card */}
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/90 text-white font-mono text-xs font-bold px-3 py-1 shadow-sm">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-forest-green text-white font-mono text-xs font-bold px-3 py-1 shadow-sm">
                         <Calendar size={12} />
                         {photo.year}
                       </span>
-                      <span className="inline-flex items-center rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-neutral-200 text-xs font-medium px-3 py-1">
+                      <span className="inline-flex items-center rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white/90 text-xs font-medium px-3 py-1">
                         {photo.edition}
                       </span>
                     </div>
@@ -232,29 +232,29 @@ export function PreviousCyclothonGallery({
 
                   {/* Bottom Content & Editorial Caption */}
                   <div className="space-y-3">
-                    <div className="inline-flex items-center gap-1.5 text-xs text-primary font-medium tracking-wide">
+                    <div className="inline-flex items-center gap-1.5 text-xs text-soft-mint font-light tracking-wide">
                       <MapPin size={12} />
                       <span>{photo.location}</span>
                     </div>
 
-                    <h3 className="text-xl lg:text-2xl font-black text-white tracking-tight leading-tight">
+                    <h3 className="text-xl lg:text-2xl font-light text-white tracking-tight leading-tight">
                       {photo.title}
                     </h3>
 
-                    <p className="text-xs lg:text-sm text-neutral-300 line-clamp-3 leading-relaxed max-w-xl">
+                    <p className="text-xs lg:text-sm text-white/80 line-clamp-3 leading-relaxed max-w-xl">
                       {photo.caption}
                     </p>
 
                     {/* Metadata Pills Footer */}
-                    <div className="pt-2 flex flex-wrap items-center gap-2 text-[11px] font-mono text-neutral-300">
+                    <div className="pt-2 flex flex-wrap items-center gap-2 text-[11px] font-mono text-white/80">
                       <span className="inline-flex items-center gap-1 rounded-md bg-white/10 px-2.5 py-1 border border-white/10">
-                        <Users size={11} className="text-primary" />
+                        <Users size={11} className="text-soft-mint" />
                         {photo.turnout}
                       </span>
                       <span className="inline-flex items-center gap-1 rounded-md bg-white/10 px-2.5 py-1 border border-white/10">
                         {photo.routeDistance}
                       </span>
-                      <span className="inline-flex items-center rounded-md bg-black/40 px-2.5 py-1 text-neutral-400 border border-white/5">
+                      <span className="inline-flex items-center rounded-md bg-deep-green/80 px-2.5 py-1 text-white/70 border border-white/10">
                         Credit: {photo.photographer}
                       </span>
                     </div>
@@ -300,8 +300,8 @@ export function PreviousCyclothonGallery({
                   className={cn(
                     "absolute inset-0 transition-opacity duration-300",
                     isExpanded
-                      ? "bg-gradient-to-t from-black/95 via-black/40 to-black/20"
-                      : "bg-black/60"
+                      ? "bg-gradient-to-t from-deep-green/95 via-deep-green/50 to-deep-green/25"
+                      : "bg-deep-green/70"
                   )}
                 />
 
@@ -313,14 +313,14 @@ export function PreviousCyclothonGallery({
                   )}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="rounded-full bg-primary/20 border border-primary/40 px-2.5 py-0.5 text-xs font-mono font-bold text-primary">
+                    <span className="rounded-full bg-soft-mint/15 border border-soft-mint/30 px-2.5 py-0.5 text-xs font-mono font-bold text-soft-mint">
                       {photo.year}
                     </span>
                     <span className="font-semibold text-sm text-white line-clamp-1">
                       {photo.title}
                     </span>
                   </div>
-                  <ChevronRight size={18} className="text-neutral-400" />
+                  <ChevronRight size={18} className="text-white/70" />
                 </div>
 
                 {/* Expanded Mobile View */}
@@ -334,10 +334,10 @@ export function PreviousCyclothonGallery({
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className="rounded-full bg-primary text-white px-2.5 py-0.5 text-xs font-bold font-mono">
+                      <span className="rounded-full bg-forest-green text-white px-2.5 py-0.5 text-xs font-bold font-mono">
                         {photo.year}
                       </span>
-                      <span className="text-xs text-neutral-300 font-medium">
+                      <span className="text-xs text-white/80 font-light">
                         {photo.edition}
                       </span>
                     </div>
@@ -356,17 +356,17 @@ export function PreviousCyclothonGallery({
                   </div>
 
                   <div className="space-y-1.5">
-                    <p className="text-xs text-primary font-medium flex items-center gap-1">
+                    <p className="text-xs text-soft-mint font-light flex items-center gap-1">
                       <MapPin size={11} />
                       {photo.location}
                     </p>
-                    <h3 className="text-base font-bold text-white">
+                    <h3 className="text-base font-light text-white">
                       {photo.title}
                     </h3>
-                    <p className="text-xs text-neutral-300 line-clamp-2">
+                    <p className="text-xs text-white/80 line-clamp-2">
                       {photo.caption}
                     </p>
-                    <div className="flex items-center gap-2 pt-1 text-[10px] font-mono text-neutral-400">
+                    <div className="flex items-center gap-2 pt-1 text-[10px] font-mono text-white/70">
                       <span>{photo.turnout}</span>
                       <span>•</span>
                       <span>{photo.routeDistance}</span>
@@ -386,7 +386,7 @@ export function PreviousCyclothonGallery({
               onClick={() => setActiveId(p.id)}
               className={cn(
                 "h-2 rounded-full transition-all duration-300",
-                activeId === p.id ? "w-8 bg-primary" : "w-2 bg-white/30"
+                activeId === p.id ? "w-8 bg-soft-mint" : "w-2 bg-white/30"
               )}
               aria-label={`Select photo ${p.title}`}
             />

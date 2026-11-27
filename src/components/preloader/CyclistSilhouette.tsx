@@ -45,7 +45,7 @@ const SHIN_D =
 const SHOE_D =
   "M-12,-12 C-3,-16 9,-12 18,-4 C32,0 48,7 62,14 C74,19 82,23 80,31 C79,34 74,35 70,35 L-16,35 C-23,35 -24,28 -23,20 C-23,6 -17,-6 -12,-12 Z";
 
-const INK = "#000";
+const INK = "var(--brand-deep-green)";
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
@@ -124,7 +124,7 @@ function Leg({ knee, ankle }: { knee: V; ankle: V }) {
     <g>
       <g transform={`translate(${HIP.x} ${HIP.y}) rotate(${thighAng})`}>
         <path d={THIGH_D} fill={INK} />
-        <line x1="122" y1="-28" x2="122" y2="26" stroke="#fff" strokeWidth="3.5" />
+        <line x1="122" y1="-28" x2="122" y2="26" stroke="var(--brand-white)" strokeWidth="3.5" />
       </g>
       <path d={SHIN_D} fill={INK} transform={`translate(${r(knee.x)} ${r(knee.y)}) rotate(${shinAng})`} />
       <path d={SHOE_D} fill={INK} transform={`translate(${r(ankle.x)} ${r(ankle.y)})`} />
@@ -265,7 +265,7 @@ export function CyclistSilhouette({
                   cx={BB.x + 22 * Math.cos(a)}
                   cy={BB.y + 22 * Math.sin(a)}
                   r={r}
-                  fill="#fff"
+                  fill="var(--brand-white)"
                 />
               );
             })}
@@ -285,7 +285,7 @@ export function CyclistSilhouette({
               <path
                 d="M598,105 L607,130 L615,105"
                 fill="none"
-                stroke="#fff"
+                stroke="var(--brand-white)"
                 strokeWidth="3"
                 strokeLinejoin="round"
               />
@@ -316,7 +316,7 @@ export function CyclistSilhouette({
               d={HELMET_PATH}
               fill={INK}
               fillRule="evenodd"
-              stroke="#fff"
+              stroke="var(--brand-white)"
               strokeWidth="3"
               strokeLinejoin="round"
               paintOrder="stroke"

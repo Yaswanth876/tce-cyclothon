@@ -69,7 +69,7 @@ export function GalleryLightbox({
       role="dialog"
       aria-modal="true"
       aria-label={photo.title}
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 bg-black/90 backdrop-blur-xl animate-in fade-in duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 bg-deep-green/95 backdrop-blur-xl animate-in fade-in duration-300"
       onClick={onClose}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
@@ -78,8 +78,8 @@ export function GalleryLightbox({
       <div className="absolute top-4 left-4 right-4 z-50 flex items-center justify-between pointer-events-none">
         {/* Index counter */}
         {currentIndex !== undefined && totalCount !== undefined ? (
-          <div className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-black/60 backdrop-blur-md border border-white/15 px-3 py-1.5 text-xs font-mono text-neutral-300 shadow-lg">
-            <Camera size={13} className="text-primary" />
+          <div className="pointer-events-auto inline-flex items-center gap-2 text-xs font-mono text-white/80">
+            <Camera size={13} className="text-soft-mint" />
             <span>
               {currentIndex + 1} / {totalCount}
             </span>
@@ -92,7 +92,7 @@ export function GalleryLightbox({
         <button
           type="button"
           onClick={onClose}
-          className="pointer-events-auto flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 text-white transition-all duration-200"
+          className="pointer-events-auto flex items-center justify-center w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all duration-200"
           aria-label="Close photo preview"
         >
           <X size={20} />
@@ -106,7 +106,7 @@ export function GalleryLightbox({
           e.stopPropagation();
           onNavigate("prev");
         }}
-        className="absolute left-3 sm:left-6 z-50 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 text-white transition-all duration-200"
+        className="absolute left-3 sm:left-6 z-50 flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all duration-200"
         aria-label="Previous photo"
       >
         <ChevronLeft size={24} />
@@ -118,7 +118,7 @@ export function GalleryLightbox({
           e.stopPropagation();
           onNavigate("next");
         }}
-        className="absolute right-3 sm:right-6 z-50 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 text-white transition-all duration-200"
+        className="absolute right-3 sm:right-6 z-50 flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all duration-200"
         aria-label="Next photo"
       >
         <ChevronRight size={24} />
@@ -127,10 +127,10 @@ export function GalleryLightbox({
       {/* Main Content Modal */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative max-w-5xl w-full max-h-[90vh] flex flex-col rounded-3xl overflow-hidden bg-neutral-900 border border-white/15 shadow-2xl"
+        className="relative max-w-5xl w-full max-h-[90vh] flex flex-col rounded-card overflow-hidden bg-deep-green border border-white/15 shadow-card"
       >
         {/* Image Frame */}
-        <div className="relative w-full h-[50vh] sm:h-[60vh] bg-black/70 overflow-hidden flex items-center justify-center">
+        <div className="relative w-full h-[50vh] sm:h-[60vh] bg-deep-green/70 overflow-hidden flex items-center justify-center">
           <Image
             src={photo.imageUrl}
             alt={photo.title}
@@ -142,42 +142,42 @@ export function GalleryLightbox({
         </div>
 
         {/* Editorial Information Bar */}
-        <div className="p-5 sm:p-7 bg-neutral-900/95 border-t border-white/10 overflow-y-auto max-h-[35vh]">
+        <div className="p-5 sm:p-7 bg-deep-green/95 border-t border-white/10 overflow-y-auto max-h-[35vh]">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-2.5">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1 rounded-full bg-primary/20 border border-primary/40 px-3 py-0.5 text-xs font-mono font-bold text-primary">
+              <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-soft-mint">
                 <Calendar size={12} />
                 {photo.year} · {photo.edition}
               </span>
-              <span className="text-xs text-neutral-400 font-medium">
+              <span className="text-xs text-white/70 font-light">
                 {photo.theme}
               </span>
             </div>
 
-            <span className="text-xs font-mono text-neutral-400">
+            <span className="text-xs font-mono text-white/70">
               Photographer: {photo.photographer}
             </span>
           </div>
 
-          <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+          <h3 className="text-xl sm:text-2xl font-light text-white tracking-tight">
             {photo.title}
           </h3>
 
-          <p className="mt-1.5 text-sm sm:text-base text-neutral-300 leading-relaxed">
+          <p className="mt-1.5 text-sm sm:text-base text-white/80 leading-relaxed">
             {photo.caption}
           </p>
 
-          <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap items-center gap-4 text-xs font-mono text-neutral-400">
+          <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap items-center gap-4 text-xs font-mono text-white/70">
             <div className="flex items-center gap-1.5">
-              <MapPin size={13} className="text-primary" />
+              <MapPin size={13} className="text-soft-mint" />
               <span>{photo.location}</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <Users size={13} className="text-primary" />
+              <Users size={13} className="text-soft-mint" />
               <span>{photo.turnout}</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <Award size={13} className="text-primary" />
+              <Award size={13} className="text-soft-mint" />
               <span>{photo.routeDistance}</span>
             </div>
           </div>

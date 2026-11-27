@@ -156,12 +156,12 @@ export function Navbar({
             aria-current={current ? "location" : undefined}
             className={cn(
               mobile
-                ? "flex min-h-12 w-full items-center rounded-xl px-3 py-3 text-[15px] font-semibold transition-colors hover:bg-[#F4F8F2] hover:text-[#3B7E2B] focus-visible:outline-none focus-visible:bg-[#F4F8F2]"
-                : "rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-zinc-100 hover:text-foreground",
+                ? "flex min-h-12 w-full items-center rounded-xl px-3 py-3 text-[15px] font-semibold transition-colors hover:bg-primary-tint hover:text-forest-green focus-visible:outline-none focus-visible:bg-primary-tint"
+                : "rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-background hover:text-foreground",
               current
-                ? "bg-[#EBF6E8] text-[#3B7E2B]"
+                ? "bg-primary-tint text-forest-green"
                 : mobile
-                  ? "text-neutral-800"
+                  ? "text-foreground"
                   : "text-foreground/70"
             )}
           >
@@ -176,13 +176,13 @@ export function Navbar({
       className={cn(
         "sticky top-0 z-50 w-full border-b transition-[background-color,box-shadow,border-color] duration-300 motion-reduce:transition-none",
         scrolled
-          ? "border-neutral-200/80 bg-white/95 shadow-[0_8px_28px_-20px_rgba(17,24,39,0.45)] backdrop-blur-md"
-          : "border-neutral-100 bg-white"
+          ? "border-border bg-white/95 shadow-card backdrop-blur-md"
+          : "border-border bg-white"
       )}
     >
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[3px] origin-left bg-[#4C9F38] transition-transform duration-100 motion-reduce:transition-none"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[3px] origin-left bg-primary transition-transform duration-100 motion-reduce:transition-none"
         style={{ transform: `scaleX(${Math.min(1, Math.max(0, scrollProgress))})` }}
       />
 
@@ -224,7 +224,7 @@ export function Navbar({
           <a
             href={registerHref}
             onClick={handleRegisterClick}
-            className="hidden min-h-11 items-center gap-2 whitespace-nowrap rounded-full bg-[#4C9F38] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#3B7E2B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B7E2B] focus-visible:ring-offset-2 motion-reduce:transition-none xl:inline-flex"
+            className="hidden min-h-11 items-center gap-2 whitespace-nowrap rounded-full bg-forest-green px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-deep-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2 motion-reduce:transition-none xl:inline-flex"
           >
             Join the track <span aria-hidden="true">↗</span>
           </a>
@@ -236,7 +236,7 @@ export function Navbar({
             aria-expanded={menuOpen}
             aria-controls="mobile-nav-drawer"
             className={cn(
-              "inline-flex size-11 items-center justify-center rounded-full text-neutral-800 transition-[background-color,transform] hover:bg-[#EBF6E8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4C9F38] focus-visible:ring-offset-2 active:scale-95 xl:hidden",
+              "inline-flex size-11 items-center justify-center rounded-full text-foreground transition-[background-color,transform] hover:bg-primary-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2 active:scale-95 xl:hidden",
               menuOpen && "rotate-90"
             )}
           >
@@ -253,7 +253,7 @@ export function Navbar({
         id="mobile-nav-drawer"
         hidden={!menuOpen}
         className={cn(
-          "absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-neutral-100 bg-white shadow-[0_18px_30px_-24px_rgba(17,24,39,0.45)] xl:hidden",
+          "absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-border bg-white shadow-card xl:hidden",
           menuOpen && "nav-menu-enter"
         )}
       >
@@ -271,7 +271,7 @@ export function Navbar({
                 handleRegisterClick(event);
                 setMenuOpen(false);
               }}
-              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#4C9F38] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#3B7E2B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B7E2B] focus-visible:ring-offset-2 motion-reduce:transition-none"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-forest-green px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-deep-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2 motion-reduce:transition-none"
             >
               Join the track <span aria-hidden="true">↗</span>
             </a>

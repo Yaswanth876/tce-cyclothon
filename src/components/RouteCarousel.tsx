@@ -29,12 +29,6 @@ export function RouteCarousel({ routes }: RouteCarouselProps) {
     }
   };
 
-  const categoryColors: Record<string, string> = {
-    "5 KM": "bg-blue-100 text-blue-700",
-    "15 KM": "bg-amber-100 text-amber-700",
-    "25 KM": "bg-primary-tint text-primary",
-  };
-
   return (
     <div>
       {/* Carousel */}
@@ -51,7 +45,7 @@ export function RouteCarousel({ routes }: RouteCarouselProps) {
               "shrink-0 w-72 md:w-80 snap-center rounded-2xl overflow-hidden border",
               "motion-safe:transition-all motion-safe:duration-200 bg-white",
               activeIndex === i
-                ? "border-primary shadow-lg shadow-primary/10 ring-1 ring-primary"
+              ? "border-forest-green shadow-card ring-1 ring-forest-green"
                 : "border-border shadow-sm"
             )}
             onClick={() => setActiveIndex(i)}
@@ -61,21 +55,8 @@ export function RouteCarousel({ routes }: RouteCarouselProps) {
             onKeyDown={(e) => e.key === "Enter" && setActiveIndex(i)}
           >
             {/* Image placeholder */}
-            <div className="h-44 bg-gradient-to-br from-zinc-200 via-zinc-100 to-zinc-200 relative overflow-hidden flex items-center justify-center">
-              <MapPin size={32} className="text-zinc-400" aria-hidden="true" />
-              {/* Route category badge */}
-              <span
-                className={cn(
-                  "absolute top-3 left-3 text-[10px] font-bold rounded-full px-2.5 py-1",
-                  categoryColors[cp.route.category] ?? "bg-zinc-100 text-zinc-600"
-                )}
-              >
-                {cp.route.category} · {cp.route.label}
-              </span>
-              {/* Km badge */}
-              <span className="absolute bottom-3 right-3 bg-primary text-white text-xs font-bold rounded-full px-2.5 py-1">
-                {cp.kmMarker} km
-              </span>
+            <div className="h-44 bg-gradient-to-br from-primary-tint via-background to-primary-tint relative overflow-hidden flex items-center justify-center">
+              <MapPin size={32} className="text-forest-green/60" aria-hidden="true" />
             </div>
 
             {/* Card body */}
@@ -83,11 +64,17 @@ export function RouteCarousel({ routes }: RouteCarouselProps) {
               <p className="text-xs text-muted font-semibold uppercase tracking-widest mb-1">
                 {cp.landmark}
               </p>
-              <h3 className="text-base font-bold text-foreground leading-snug mb-3">
+              <h3 className="text-base font-light text-foreground leading-snug mb-3">
                 {cp.name}
               </h3>
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs">
+                <span className="font-semibold text-forest-green">
+                  {cp.route.category} · {cp.route.label}
+                </span>
+                <span className="font-medium text-muted">{cp.kmMarker} km</span>
+              </div>
               {cp.hasWaterStation && (
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-primary bg-primary-tint rounded-full px-2.5 py-1">
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-forest-green">
                   <Droplets size={11} aria-hidden="true" /> Water Station
                 </span>
               )}
@@ -109,7 +96,7 @@ export function RouteCarousel({ routes }: RouteCarouselProps) {
               onClick={() => scrollTo(i)}
               className={cn(
                 "rounded-full motion-safe:transition-all motion-safe:duration-200",
-                i === activeIndex ? "w-6 h-2 bg-primary" : "w-2 h-2 bg-zinc-300 hover:bg-zinc-400"
+                i === activeIndex ? "w-6 h-2 bg-forest-green" : "w-2 h-2 bg-border hover:bg-forest-green/50"
               )}
             />
           ))}
@@ -121,7 +108,7 @@ export function RouteCarousel({ routes }: RouteCarouselProps) {
             onClick={() => scrollTo(activeIndex - 1)}
             disabled={activeIndex === 0}
             aria-label="Previous checkpoint"
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-charcoal text-white disabled:opacity-30 hover:bg-primary motion-safe:transition-colors motion-safe:duration-200"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-forest-green text-white disabled:opacity-30 hover:bg-deep-green motion-safe:transition-colors motion-safe:duration-200"
           >
             <ChevronLeft size={18} />
           </button>
@@ -129,7 +116,7 @@ export function RouteCarousel({ routes }: RouteCarouselProps) {
             onClick={() => scrollTo(activeIndex + 1)}
             disabled={activeIndex === allCheckpoints.length - 1}
             aria-label="Next checkpoint"
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-charcoal text-white disabled:opacity-30 hover:bg-primary motion-safe:transition-colors motion-safe:duration-200"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-forest-green text-white disabled:opacity-30 hover:bg-deep-green motion-safe:transition-colors motion-safe:duration-200"
           >
             <ChevronRight size={18} />
           </button>
