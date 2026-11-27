@@ -3,17 +3,17 @@ import { Share2, MessageCircle, Link2, Play, Bike } from "lucide-react";
 
 const FOOTER_LINKS = {
   "Quick Links": [
-    { label: "Home", href: "/#hero" },
-    { label: "Mission", href: "/#mission" },
-    { label: "Previous Gallery", href: "/gallery" },
-    { label: "Route Map", href: "/#route" },
-    { label: "Rider Kit", href: "/#kit" },
+    { label: "Home", href: "#hero" },
+    { label: "Mission", href: "#mission" },
+    { label: "Previous Gallery", href: "#gallery" },
+    { label: "Route Map", href: "#route" },
+    { label: "Rider Kit", href: "#kit" },
     { label: "Register", href: eventConfig.event.registrationUrl },
   ],
   Resources: [
-    { label: "FAQ", href: "/#faq" },
-    { label: "Sponsors", href: "/#sponsors" },
-    { label: "Voices", href: "/#voices" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Sponsors", href: "#sponsors" },
+    { label: "Voices", href: "#voices" },
     { label: "Contact", href: "mailto:cyclothon@tce.edu" },
   ],
 };

@@ -3,7 +3,6 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -26,9 +25,9 @@ export interface NavbarProps {
 
 export const DEFAULT_NAV_LINKS: NavLinkItem[] = [
   { label: "Mission", href: "#mission" },
-  { label: "Gallery", href: "/gallery" },
   { label: "Route", href: "#route" },
   { label: "Rider Kit", href: "#kit" },
+  { label: "Gallery", href: "#gallery" },
   { label: "Sponsors", href: "#sponsors" },
   { label: "FAQ", href: "#faq" },
 ];
@@ -47,8 +46,6 @@ export function Navbar({
   onRegisterClick,
   navLinks = DEFAULT_NAV_LINKS,
 }: NavbarProps = {}) {
-  const pathname = usePathname();
-  const isHomePage = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -74,8 +71,6 @@ export function Navbar({
   }, []);
 
   useEffect(() => {
-    if (!isHomePage) return;
-
     const observers: IntersectionObserver[] = [];
     const sectionIds = navLinks
       .filter(({ href }) => href.startsWith("#"))
@@ -96,7 +91,7 @@ export function Navbar({
     });
 
     return () => observers.forEach((observer) => observer.disconnect());
-  }, [isHomePage, navLinks, pathname]);
+  }, [navLinks]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -114,30 +109,19 @@ export function Navbar({
     };
   }, [menuOpen]);
 
-  const resolveHref = (href: string) => {
-    if (href.startsWith("/")) return href;
-    if (href.startsWith("#") && !isHomePage) return `/${href}`;
-    return href;
-  };
-
-  const isCurrentLink = (href: string) => {
-    if (href === "/gallery") return pathname === "/gallery";
-    return isHomePage && activeSection === href.slice(1);
-  };
-
   const handleRegisterClick = (event: MouseEvent<HTMLAnchorElement>) => {
     onRegisterClick?.(event);
   };
 
   const renderLinks = (mobile = false) =>
     navLinks.map(({ label, href }) => {
-      const current = isCurrentLink(href);
+      const current = href.startsWith("#") && activeSection === href.slice(1);
       return (
         <li key={href}>
           <Link
-            href={resolveHref(href)}
+            href={href}
             onClick={mobile ? () => setMenuOpen(false) : undefined}
-            aria-current={current ? (href === "/gallery" ? "page" : "location") : undefined}
+            aria-current={current ? "location" : undefined}
             className={cn(
               mobile
                 ? "flex min-h-12 w-full items-center rounded-xl px-3 py-3 text-[15px] font-semibold transition-colors hover:bg-[#F4F8F2] hover:text-[#3B7E2B] focus-visible:outline-none focus-visible:bg-[#F4F8F2]"
@@ -154,8 +138,6 @@ export function Navbar({
         </li>
       );
     });
-
-  const resolvedRegisterHref = resolveHref(registerHref);
 
   return (
     <header
@@ -208,7 +190,7 @@ export function Navbar({
 
         <div className="flex items-center gap-3">
           <a
-            href={resolvedRegisterHref}
+            href={registerHref}
             onClick={handleRegisterClick}
             className="hidden min-h-11 items-center gap-2 whitespace-nowrap rounded-full bg-[#4C9F38] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#3B7E2B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B7E2B] focus-visible:ring-offset-2 motion-reduce:transition-none xl:inline-flex"
           >
@@ -221,7 +203,10 @@ export function Navbar({
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             aria-controls="mobile-nav-drawer"
-            className="inline-flex size-11 items-center justify-center rounded-full text-neutral-800 transition-colors hover:bg-[#EBF6E8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4C9F38] focus-visible:ring-offset-2 xl:hidden"
+            className={cn(
+              "inline-flex size-11 items-center justify-center rounded-full text-neutral-800 transition-[background-color,transform] hover:bg-[#EBF6E8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4C9F38] focus-visible:ring-offset-2 active:scale-95 xl:hidden",
+              menuOpen && "rotate-90"
+            )}
           >
             {menuOpen ? (
               <X size={22} aria-hidden="true" />
@@ -235,7 +220,10 @@ export function Navbar({
       <div
         id="mobile-nav-drawer"
         hidden={!menuOpen}
-        className="absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-neutral-100 bg-white shadow-[0_18px_30px_-24px_rgba(17,24,39,0.45)] xl:hidden"
+        className={cn(
+          "absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-neutral-100 bg-white shadow-[0_18px_30px_-24px_rgba(17,24,39,0.45)] xl:hidden",
+          menuOpen && "nav-menu-enter"
+        )}
       >
         <nav aria-label="Mobile navigation">
           <ul
@@ -246,7 +234,7 @@ export function Navbar({
           </ul>
           <div className="mx-auto max-w-[1440px] px-4 pb-5 sm:px-8">
             <a
-              href={resolvedRegisterHref}
+              href={registerHref}
               onClick={(event) => {
                 handleRegisterClick(event);
                 setMenuOpen(false);

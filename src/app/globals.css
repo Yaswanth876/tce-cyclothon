@@ -38,6 +38,7 @@
 /* ── Base layer ── */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -65,11 +66,30 @@ body {
 
 /* ── Reduced motion safety ── */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+.nav-menu-enter {
+  animation: nav-menu-enter 180ms ease-out;
+}
+
+@keyframes nav-menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

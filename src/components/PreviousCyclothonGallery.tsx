@@ -89,7 +89,7 @@ export function PreviousCyclothonGallery({
           <div className="flex flex-wrap items-center gap-3">
             {!isStandalonePage && (
               <Link
-                href="/gallery"
+                href="#gallery"
                 className={cn(
                   "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold",
                   "bg-white/10 hover:bg-white/20 text-white border border-white/15",

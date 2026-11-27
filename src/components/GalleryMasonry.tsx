@@ -183,7 +183,28 @@ export function GalleryMasonry() {
   }, [displayedPhotos]);
 
   return (
-    <section className="relative w-full pb-24">
+    <section
+      id="gallery"
+      aria-labelledby="gallery-heading"
+      className="relative w-full border-t border-white/10 bg-neutral-950 py-16 text-white md:py-24"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header className="mb-9 max-w-2xl">
+          <p className="mb-3 text-sm font-semibold text-primary">
+            TCE Cyclothon archive
+          </p>
+          <h2
+            id="gallery-heading"
+            className="text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl"
+          >
+            The rides that brought us here
+          </h2>
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-neutral-300 sm:text-base">
+            Browse 52 photographs from the 2020 and 2024 editions. Filter by
+            year, then open any moment for the full story.
+          </p>
+        </header>
+
       {/* Filters and count bar */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 sm:mb-10">
         <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-hide">
@@ -198,6 +219,7 @@ export function GalleryMasonry() {
               <button
                 key={filter.id}
                 type="button"
+                aria-pressed={isSelected}
                 onClick={() => {
                   setActiveFilter(filter.id);
                   setVisibleCount(INITIAL_VISIBLE_COUNT);
@@ -243,19 +265,21 @@ export function GalleryMasonry() {
         ref={gridRef}
         className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 sm:gap-5 [column-fill:_balance]"
       >
-        {displayedPhotos.map((photo, index) => {
+        {displayedPhotos.map((photo) => {
           return (
             <div
               key={photo.id}
               data-slot-wrapper="true"
               className="gallery-slot-wrapper relative mb-4 sm:mb-5 break-inside-avoid"
             >
-              <div
+              <button
+                type="button"
+                aria-label={`Open ${photo.title} photo`}
                 onClick={() => setSelectedPhoto(photo)}
                 className={cn(
-                  "gallery-slot-card group relative overflow-hidden rounded-2xl",
+                  "gallery-slot-card group relative block w-full overflow-hidden rounded-2xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950",
                   "bg-neutral-900 border border-white/10 hover:border-primary/50",
-                  "cursor-pointer select-none transition-shadow duration-300 hover:shadow-2xl hover:shadow-primary/10"
+                  "select-none transition-shadow duration-300 hover:shadow-2xl hover:shadow-primary/10"
                 )}
               >
                 {/* Image Frame with intrinsic varying aspect ratio */}
@@ -265,7 +289,7 @@ export function GalleryMasonry() {
                     alt={photo.title}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                    loading={index < 4 ? "eager" : "lazy"}
+                    loading="lazy"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     style={{ objectPosition: photo.objectPosition }}
                   />
@@ -281,13 +305,13 @@ export function GalleryMasonry() {
                     </span>
 
                     {/* Expand Icon Button (Revealed on hover) */}
-                    <span className="flex items-center justify-center w-7 h-7 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100">
+                    <span className="flex items-center justify-center w-7 h-7 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100">
                       <Maximize2 size={12} />
                     </span>
                   </div>
 
                   {/* Default persistent minimal bottom info */}
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-neutral-300 pointer-events-none group-hover:opacity-0 transition-opacity duration-200">
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-neutral-300 pointer-events-none group-hover:opacity-0 group-focus-visible:opacity-0 transition-opacity duration-200">
                     <span className="truncate max-w-[70%] font-semibold text-white/90">
                       {photo.title}
                     </span>
@@ -297,7 +321,7 @@ export function GalleryMasonry() {
                   </div>
 
                   {/* Hover Caption Overlay: Slides up smoothly on hover */}
-                  <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black via-black/90 to-transparent translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none flex flex-col justify-end">
+                  <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black via-black/90 to-transparent translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 transition-all duration-300 pointer-events-none flex flex-col justify-end">
                     <div className="inline-flex items-center gap-1 text-[11px] text-primary font-medium mb-1">
                       <MapPin size={11} />
                       <span className="truncate">{photo.location}</span>
@@ -320,7 +344,7 @@ export function GalleryMasonry() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
             </div>
           );
         })}
@@ -399,6 +423,7 @@ export function GalleryMasonry() {
           }}
         />
       )}
+      </div>
     </section>
   );
 }
