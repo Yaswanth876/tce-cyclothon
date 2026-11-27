@@ -1,70 +1,92 @@
 @import "tailwindcss";
 
-@theme inline {
-  /* ── Primitive Palette ── */
-  --color-obsidian:         #0A0A0A;
-  --color-charcoal:         #1C1C1E;
-  --color-carbon:           #111111;
-  --color-midnight:         #102540;
+/* Brand primitives and semantic layout tokens */
+:root {
+  --brand-primary: #279B48;
+  --brand-forest-green: #176B35;
+  --brand-deep-green: #173D28;
+  --brand-soft-mint: #DDF1E2;
+  --brand-off-white: #F5F8F5;
+  --brand-border: #E8EEE9;
+  --brand-charcoal: #252D27;
+  --brand-muted: #58665C;
+  --brand-energy-gold: #F2B84B;
+  --brand-white: #FFFFFF;
 
-  /* ── SDG 3.5 Kelly Green (primary accent — replaces Cyclooner neon lime) ── */
-  --color-sdg-green:        #4C9F38;
-  --color-sdg-green-hover:  #3B7E2B;
-  --color-sdg-green-tint:   #EBF6E8;
-
-  /* ── TCE Maroon (institutional host) ── */
-  --color-tce-maroon:       #6E1A27;
-  --color-tce-maroon-tint:  #F5E8EB;
-
-  /* ── Semantic Aliases ── */
-  --color-background:       #FFFFFF;
-  --color-foreground:       #111111;
-  --color-primary:          #4C9F38;
-  --color-primary-hover:    #3B7E2B;
-  --color-primary-tint:     #EBF6E8;
-  --color-accent:           #6E1A27;
-  --color-accent-tint:      #F5E8EB;
-  --color-surface-dark:     #0A0A0A;
-  --color-surface-card:     #1C1C1E;
-  --color-surface-pledge:   #102540;
-  --color-muted:            #71717A;
-  --color-border:           #E4E4E7;
-
-  /* ── Typography ── */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --layout-content-width: 80rem;
+  --layout-section-space: clamp(5rem, 8vw, 7rem);
+  --layout-gutter: clamp(1rem, 4vw, 4rem);
+  --motion-fast: 160ms;
+  --motion-standard: 240ms;
 }
 
-/* ── Base layer ── */
+@theme inline {
+  --color-background: var(--brand-off-white);
+  --color-foreground: var(--brand-charcoal);
+  --color-primary: var(--brand-primary);
+  --color-primary-hover: var(--brand-forest-green);
+  --color-primary-tint: var(--brand-soft-mint);
+  --color-soft-mint: var(--brand-soft-mint);
+  --color-forest-green: var(--brand-forest-green);
+  --color-deep-green: var(--brand-deep-green);
+  --color-charcoal: var(--brand-charcoal);
+  --color-muted: var(--brand-muted);
+  --color-muted-foreground: var(--brand-muted);
+  --color-border: var(--brand-border);
+  --color-surface: var(--brand-white);
+  --color-surface-dark: var(--brand-deep-green);
+  --color-surface-card: var(--brand-white);
+  --color-energy-gold: var(--brand-energy-gold);
+
+  --spacing-section: var(--layout-section-space);
+  --spacing-gutter: var(--layout-gutter);
+  --container-site: var(--layout-content-width);
+  --radius-card: 1.5rem;
+  --radius-panel: 1rem;
+  --radius-control: 0.75rem;
+  --shadow-card: 0 10px 30px color-mix(in srgb, var(--brand-deep-green) 10%, transparent);
+
+  --font-sans: var(--font-poppins);
+  --font-mono: var(--font-poppins);
+  --font-weight-thin: 300;
+  --font-weight-extralight: 300;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 400;
+  --font-weight-semibold: 400;
+  --font-weight-bold: 400;
+  --font-weight-extrabold: 400;
+  --font-weight-black: 400;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
 }
 
 body {
-  background: var(--color-background);
+  background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Scrollbar hide utility ── */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
-/* ── Focus ring ── */
 *:focus-visible {
-  outline: 2px solid #4C9F38;
+  outline: 2px solid var(--brand-forest-green);
   outline-offset: 2px;
 }
 
-/* ── Reduced motion safety ── */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -79,7 +101,7 @@ body {
 }
 
 .nav-menu-enter {
-  animation: nav-menu-enter 180ms ease-out;
+  animation: nav-menu-enter var(--motion-fast) ease-out;
 }
 
 @keyframes nav-menu-enter {
@@ -93,19 +115,16 @@ body {
   }
 }
 
-/* ── Gallery Slot-In Placement Animation (Bidirectional Scroll) ── */
 .gallery-slot-wrapper {
-  /* Holds static column position and masonry gaps */
   contain: layout;
 }
 
 .gallery-slot-card {
   will-change: transform, opacity;
   transform-origin: center center;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow var(--motion-standard) ease;
 }
 
-/* Scrolling DOWN: Picture rises from below into the gap */
 .gallery-slot-card.slot-entering-down {
   animation: slotPlaceDown var(--slot-dur, 1.05s) cubic-bezier(0.16, 1, 0.3, 1) var(--slot-del, 0s) both;
 }
@@ -124,7 +143,6 @@ body {
   }
 }
 
-/* Scrolling UP: Picture drops from above into the gap */
 .gallery-slot-card.slot-entering-up {
   animation: slotPlaceUp var(--slot-dur, 1.05s) cubic-bezier(0.16, 1, 0.3, 1) var(--slot-del, 0s) both;
 }
