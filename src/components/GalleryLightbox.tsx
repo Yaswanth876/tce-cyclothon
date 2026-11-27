@@ -133,11 +133,11 @@ export function GalleryLightbox({
         <div className="relative w-full h-[50vh] sm:h-[60vh] bg-deep-green/70 overflow-hidden flex items-center justify-center">
           <Image
             src={photo.imageUrl}
-            alt={photo.title}
+            alt={photo.subtitle}
             fill
-            sizes="(max-width: 1200px) 100vw, 1200px"
+            sizes="(max-width: 639px) calc(100vw - 1.5rem), (max-width: 1023px) calc(100vw - 3rem), (max-width: 1103px) calc(100vw - 5rem), 1024px"
             className="object-contain"
-            priority
+            loading="eager"
           />
         </div>
 

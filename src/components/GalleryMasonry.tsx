@@ -279,9 +279,9 @@ export function GalleryMasonry() {
                 <div className={cn("relative w-full overflow-hidden", photo.aspectRatio)}>
                   <Image
                     src={photo.imageUrl}
-                    alt={photo.title}
+                    alt={photo.subtitle}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                    sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc(50vw - 2.125rem), (max-width: 1279px) calc(33.333vw - 2.167rem), 289px"
                     loading="lazy"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     style={{ objectPosition: photo.objectPosition }}
