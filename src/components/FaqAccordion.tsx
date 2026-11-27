@@ -29,8 +29,8 @@ export function FaqAccordion({ items }: FaqAccordionProps) {
               id={questionId}
               className={cn(
                 "flex min-h-16 w-full items-center justify-between gap-5 py-5 text-left text-base font-semibold text-foreground",
-                "transition-colors hover:text-primary motion-reduce:transition-none",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                "transition-colors hover:text-forest-green motion-reduce:transition-none",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2"
               )}
             >
               <span>{item.question}</span>

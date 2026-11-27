@@ -41,15 +41,15 @@ export function FaqExplorer() {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search your questions..."
-          className="min-h-16 w-full rounded-full border border-border bg-background py-4 pl-14 pr-6 text-base text-foreground placeholder:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          className="min-h-16 w-full rounded-full border border-border bg-surface py-4 pl-14 pr-6 text-base text-foreground placeholder:text-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2"
         />
       </div>
 
-      <div className="-mx-1 mb-7 mt-5 overflow-x-auto px-1 pb-1 scrollbar-hide">
+      <div className="-mx-1 mb-7 mt-5 overflow-x-auto px-1 scrollbar-hide">
         <div
           role="group"
           aria-label="Filter questions by category"
-          className="flex min-w-max gap-2"
+          className="flex min-w-max gap-6 border-b border-border"
         >
           {FAQ_CATEGORIES.map((category) => {
             const isSelected = activeCategory === category.id;
@@ -60,10 +60,10 @@ export function FaqExplorer() {
                 aria-pressed={isSelected}
                 onClick={() => setActiveCategory(category.id)}
                 className={cn(
-                  "min-h-11 rounded-full px-4 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 motion-reduce:transition-none",
+                  "min-h-11 border-b-2 px-1 text-sm font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2 motion-reduce:transition-none",
                   isSelected
-                    ? "bg-primary text-white"
-                    : "border border-border bg-background text-muted hover:bg-primary-tint hover:text-foreground"
+                    ? "border-forest-green text-forest-green"
+                    : "border-transparent text-muted hover:border-border hover:text-foreground"
                 )}
               >
                 {category.label}
@@ -85,7 +85,7 @@ export function FaqExplorer() {
           role="status"
           className="border-y border-border py-10 text-center sm:py-12"
         >
-          <h3 className="text-lg font-semibold text-foreground">
+          <h3 className="text-lg font-light text-foreground">
             No matching questions
           </h3>
           <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
@@ -94,7 +94,7 @@ export function FaqExplorer() {
           <button
             type="button"
             onClick={clearFilters}
-            className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full px-4 text-sm font-semibold text-primary transition-colors hover:bg-primary-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 motion-reduce:transition-none"
+            className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full px-4 text-sm font-semibold text-forest-green transition-colors hover:bg-primary-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-green focus-visible:ring-offset-2 motion-reduce:transition-none"
           >
             Clear search and filters
           </button>

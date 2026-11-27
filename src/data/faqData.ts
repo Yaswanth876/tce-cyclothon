@@ -30,7 +30,7 @@ export const FAQS: FaqItem[] = [
     category: "getting-started",
     question: "What is TCE Cyclothon?",
     answer:
-      'TCE Cyclothon is a cycling initiative by Thiagarajar College of Engineering. The current campaign, "Pedal to No Drug," promotes drug awareness in line with UN SDG 3, Target 3.5. Event arrangements will be updated when officially confirmed.',
+      'TCE Cyclothon is a cycling initiative by Thiagarajar College of Engineering. The current campaign, "Pedal No to Drug," promotes drug awareness in line with UN SDG 3, Target 3.5. Event arrangements will be updated when officially confirmed.',
   },
   {
     id: "who-can-participate",

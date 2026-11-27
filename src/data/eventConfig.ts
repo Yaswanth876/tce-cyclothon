@@ -32,15 +32,6 @@ export interface KitItem {
   includedInCategories: string[];
 }
 
-export interface Testimonial {
-  id: string;
-  name: string;
-  avatarUrl: string;
-  role: string;
-  category: string;
-  quote: string;
-}
-
 export interface Sponsor {
   name: string;
   logoUrl: string;
@@ -69,7 +60,6 @@ export interface EventConfig {
   };
   routes: Route[];
   riderKit: KitItem[];
-  testimonials: Testimonial[];
   sponsors: {
     organizingInstitution: Sponsor;
     titleSponsors: Sponsor[];
@@ -88,7 +78,7 @@ export const eventConfig: EventConfig = {
 
   event: {
     name: "TCE Cyclothon",
-    tagline: "Pedal to No Drug",
+    tagline: "Pedal No to Drug",
     edition: "Madurai District Edition",
     sdgTarget: "UN SDG 3 · Target 3.5",
     date: null,                       // TODO: UPDATE WITH OFFICIAL TCE DATA
@@ -231,7 +221,7 @@ export const eventConfig: EventConfig = {
       id: "jersey",
       name: "SDG 3 Green Jersey",
       description:
-        "Official anti-drug awareness cycling jersey in Kelly Green, featuring UN SDG 3 branding and 'Pedal to No Drug' messaging.",
+        "Official anti-drug awareness cycling jersey in Kelly Green, featuring UN SDG 3 branding and 'Pedal No to Drug' messaging.",
       imageUrl: "/images/kit/jersey.png",   // TODO: UPDATE WITH OFFICIAL TCE DATA
       includedInCategories: ["5 KM", "15 KM", "25 KM"],
     },
@@ -266,46 +256,6 @@ export const eventConfig: EventConfig = {
         "Digital participation/completion certificate with QR verification. Share instantly.",
       imageUrl: "/images/kit/ecert.png",
       includedInCategories: ["5 KM", "15 KM", "25 KM"],
-    },
-  ],
-
-  testimonials: [
-    // TODO: UPDATE WITH OFFICIAL TCE DATA — replace with real participant quotes
-    {
-      id: "t1",
-      name: "Priya Krishnan",
-      avatarUrl: "/images/avatars/placeholder-1.jpg",
-      role: "Student, ECE Dept",
-      category: "15 KM Challenger",
-      quote:
-        "Cycling for a drug-free future gave the ride a deeper purpose. The route through Madurai's heritage sites was breathtaking.",
-    },
-    {
-      id: "t2",
-      name: "Arun Selvam",
-      avatarUrl: "/images/avatars/placeholder-2.jpg",
-      role: "Faculty, Mechanical Dept",
-      category: "25 KM Champion",
-      quote:
-        "Seeing 500+ students pedal together against drug abuse was incredibly moving. This event brings TCE together like nothing else.",
-    },
-    {
-      id: "t3",
-      name: "Meenakshi R.",
-      avatarUrl: "/images/avatars/placeholder-3.jpg",
-      role: "Student, CSE Dept",
-      category: "5 KM Fun Ride",
-      quote:
-        "My first ever cyclothon! The 5 KM route was perfect for beginners. The energy at the finish line was absolutely electric.",
-    },
-    {
-      id: "t4",
-      name: "Dr. Senthil Kumar",
-      avatarUrl: "/images/avatars/placeholder-4.jpg",
-      role: "NSS Coordinator",
-      category: "Event Organizer",
-      quote:
-        "TCE Cyclothon aligns perfectly with our NSS mandate. Cycling + anti-drug awareness is a winning combination for youth empowerment.",
     },
   ],
 
