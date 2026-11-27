@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { MapPin, Calendar } from "lucide-react";
 import { RegisterButton } from "./RegisterButton";
 import { eventConfig } from "@/data/eventConfig";
@@ -13,12 +14,23 @@ export function HeroSection() {
     >
       <div
         className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 82% 14%, color-mix(in srgb, var(--brand-primary) 14%, transparent) 0%, transparent 43%), linear-gradient(125deg, #FBFDFB 0%, var(--brand-off-white) 48%, var(--brand-soft-mint) 100%)",
-        }}
         aria-hidden="true"
       >
+        <Image
+          src="/images/tce.webp"
+          alt=""
+          fill
+          sizes="(min-width: 768px) calc(100vw - 2rem), calc(100vw - 1.5rem)"
+          fetchPriority="high"
+          className="object-cover object-[center_45%]"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 82% 14%, color-mix(in srgb, var(--brand-primary) 14%, transparent) 0%, transparent 43%), linear-gradient(125deg, rgba(251, 253, 251, 0.97) 0%, color-mix(in srgb, var(--brand-off-white) 88%, transparent) 48%, color-mix(in srgb, var(--brand-soft-mint) 62%, transparent) 100%)",
+          }}
+        />
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-16 sm:px-10 md:px-12 lg:px-16">
